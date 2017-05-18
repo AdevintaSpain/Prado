@@ -5,10 +5,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gallery_background"
+    android:fitsSystemWindows="true"
     tools:context="com.schibsted.spain.fullscreenkallery.FullscreenGalleryActivity"
     >
 
-
+  <com.schibsted.spain.fullscreenkallery.recyclerviewpager.HackyRecyclerViewPager
+      android:id="@+id/galleryViewPager"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_centerInParent="true"
+      app:rvp_singlePageFling="true"
+      app:rvp_triggerOffset="0.25"
+      />
 
   <TextView
       android:id="@+id/pagerIndicatorNumber"

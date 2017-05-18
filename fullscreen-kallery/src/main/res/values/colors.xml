@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">#3F51B5</color>
-  <color name="colorPrimaryDark">#303F9F</color>
-  <color name="colorAccent">#FF4081</color>
+  <color name="gallery_background">#000000</color>
+  <color name="gallery_pageIndicator_background">#801D1D1D</color>
+  <color name="gallery_text_color">#FFFFFF</color>
+
+  <color name="galleryPrimaryColor">@color/gallery_background</color>
+  <color name="galleryPrimaryColorDark">#1D1D1D</color>
+  <color name="galleryPrimaryColorAccent">#FFFFFF</color>
 </resources>

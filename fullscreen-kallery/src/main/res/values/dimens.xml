@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="gallery_pageIndicator_padding_top">4dp</dimen>
+  <dimen name="gallery_pageIndicator_padding_bottom">4dp</dimen>
+  <dimen name="gallery_pageIndicator_padding_left">8dp</dimen>
+  <dimen name="gallery_pageIndicator_padding_right">8dp</dimen>
+
+  <dimen name="gallery_text_drawable_padding">4dp</dimen>
+
+  <dimen name="gallery_default_margin">16dp</dimen>
+
+  <dimen name="gallery_pageIndicator_margin_top">@dimen/gallery_default_margin</dimen>
+  <dimen name="gallery_pageIndicator_margin_bottom">@dimen/gallery_default_margin</dimen>
+  <dimen name="gallery_pageIndicator_margin_left">@dimen/gallery_default_margin</dimen>
+  <dimen name="gallery_pageIndicator_margin_right">@dimen/gallery_default_margin</dimen>
+
+  <dimen name="gallery_close_icon_padding_top">4dp</dimen>
+  <dimen name="gallery_close_icon_padding_bottom">4dp</dimen>
+  <dimen name="gallery_close_icon_padding_left">4dp</dimen>
+  <dimen name="gallery_close_icon_padding_right">4dp</dimen>
+
+  <dimen name="gallery_close_icon_margin_top">@dimen/gallery_default_margin</dimen>
+  <dimen name="gallery_close_icon_margin_bottom">@dimen/gallery_default_margin</dimen>
+  <dimen name="gallery_close_icon_margin_left">@dimen/gallery_default_margin</dimen>
+  <dimen name="gallery_close_icon_margin_right">@dimen/gallery_default_margin</dimen>
+
+  <dimen name="gallery_text_size">16sp</dimen>
+</resources>

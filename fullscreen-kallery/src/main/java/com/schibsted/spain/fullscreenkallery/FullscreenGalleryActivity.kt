@@ -3,9 +3,9 @@ package com.schibsted.spain.fullscreenkallery
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.widget.TextView
-import com.schibsted.spain.fullscreenkallery.recyclerviewpager.HackyRecyclerViewPager
+import com.schibsted.spain.fullscreenkallery.adapter.GalleryRecyclerAdapter
+import com.schibsted.spain.fullscreenkallery.imageProvider.PicassoImageProvider
 import kotlinx.android.synthetic.main.activity_fullscreen_gallery.*
 
 class FullscreenGalleryActivity : AppCompatActivity() {
@@ -38,10 +38,6 @@ class FullscreenGalleryActivity : AppCompatActivity() {
 
     private fun setupGalleryViewPager() {
         galleryViewPager.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-//        var adapter : RecyclerView.Adapter<RecyclerView.ViewHolder> = provideAdapter()
+        var adapter = GalleryRecyclerAdapter(this, items, PicassoImageProvider.getInstance(this))
     }
-
-//    private fun provideAdapter() {
-//
-//    }
 }

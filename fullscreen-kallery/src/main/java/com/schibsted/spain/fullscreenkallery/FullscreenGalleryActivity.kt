@@ -38,8 +38,10 @@ class FullscreenGalleryActivity : AppCompatActivity() {
 
     private fun setupGalleryViewPager() {
         galleryViewPager.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-  //      var adapter : RecyclerView.Adapter<RecyclerView.ViewHolder> = provideAdapter()
+//        var adapter : RecyclerView.Adapter<RecyclerView.ViewHolder> = provideAdapter()
     }
 
-    //private fun provideAdapter() {}
+//    private fun provideAdapter() {
+//
+//    }
 }

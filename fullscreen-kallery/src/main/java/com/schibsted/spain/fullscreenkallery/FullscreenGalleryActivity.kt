@@ -1,5 +1,7 @@
 package com.schibsted.spain.fullscreenkallery
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -34,10 +36,53 @@ class FullscreenGalleryActivity : AppCompatActivity() {
         totalItems = items.size
 
         setupGalleryViewPager()
+
+        initCloseIcon()
+
+        initPageIndicator(savedInstanceState)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(BUNDLE_PAGE_NUMBER, currentPage)
+    }
+
+    override fun onBackPressed() {
+        setGalleryResult()
+        super.onBackPressed()
     }
 
     private fun setupGalleryViewPager() {
         galleryViewPager.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        var adapter = GalleryRecyclerAdapter(this, items, PicassoImageProvider.getInstance(this))
+        galleryViewPager.adapter = GalleryRecyclerAdapter(this, items, PicassoImageProvider.getInstance(this))
+        galleryViewPager.addOnPageChangedListener { _, newPosition -> pagerIndicatorNumber.text = providePagerIndicatorText(newPosition + 1, totalItems) }
+    }
+
+    private fun initCloseIcon() {
+        galleryCloseIcon.setOnClickListener {
+            setGalleryResult()
+            finish()
+        }
+    }
+
+    private fun setGalleryResult() {
+        val data = Intent()
+        data.putExtra(EXTRA_LIST_FINAL_INDEX, currentPage - 1)
+        setResult(Activity.RESULT_OK, data)
+    }
+
+    private fun initPageIndicator(savedInstanceState: Bundle?) {
+        if (savedInstanceState != null) {
+            currentPage = savedInstanceState.getInt(BUNDLE_PAGE_NUMBER)
+        } else {
+            currentPage = intent.getIntExtra(EXTRA_LIST_INITIAL_INDEX, INITIAL_INDEX)
+        }
+        pagerIndicatorNumber.text = providePagerIndicatorText(currentPage, totalItems)
+        galleryViewPager.scrollToPosition(currentPage)
+    }
+
+    private fun providePagerIndicatorText(page: Int, totalPages: Int): String {
+        this.currentPage = page
+        return String.format(resources.getString(R.string.pageIndicator_text_number), currentPage, totalPages)
     }
 }

@@ -1,1 +1,1 @@
-include ':fullscreen-kallery'
+include ':fullscreen-kallery', ':sample'

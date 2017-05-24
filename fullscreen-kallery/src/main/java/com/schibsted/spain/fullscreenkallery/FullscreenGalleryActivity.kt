@@ -21,7 +21,6 @@ class FullscreenGalleryActivity : AppCompatActivity() {
         private val BUNDLE_PAGE_NUMBER = "BUNDLE_PAGE_NUMBER"
     }
 
-    lateinit private var pagerIndicatorNumber: TextView
     private var totalItems: Int = 0
     private var currentPage: Int = 0
     private var items: List<String> = arrayListOf()

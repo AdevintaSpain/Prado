@@ -26,7 +26,7 @@ class PicassoImageProvider private constructor(context: Context) : ImageProvider
         private val initialized = AtomicBoolean()
 
         fun getInstance(context: Context): PicassoImageProvider {
-            if (initialized.getAndSet(true)) {
+            if (!initialized.getAndSet(true)) {
                 INSTANCE = PicassoImageProvider(context)
             }
             return INSTANCE

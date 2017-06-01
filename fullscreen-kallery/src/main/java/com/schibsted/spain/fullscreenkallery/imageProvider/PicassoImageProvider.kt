@@ -3,6 +3,7 @@ package com.schibsted.spain.fullscreenkallery.imageProvider
 import android.content.Context
 import android.view.WindowManager
 import android.widget.ImageView
+import com.github.chrisbanes.photoview.PhotoViewAttacher
 import com.jakewharton.picasso.OkHttp3Downloader
 import com.schibsted.spain.fullscreenkallery.BuildConfig
 import com.schibsted.spain.fullscreenkallery.extensions.isLandscape
@@ -53,12 +54,17 @@ class PicassoImageProvider private constructor(context: Context) : ImageProvider
         val viewSize = calculateViewSize(context)
         onInternalError = OnInternalError(imageView, onImageError)
 
+        val photoViewAttacher = addImageInteractions(imageView)
+
         picasso.load(imageUrl)
                 .noFade()
                 .noPlaceholder()
                 .resize(viewSize.width, viewSize.height)
                 .into(imageView, object : Callback {
-                    override fun onSuccess() = onImageSuccess()
+                    override fun onSuccess() {
+                        photoViewAttacher.update()
+                        onImageSuccess()
+                    }
                     override fun onError() = Unit
                 })
     }
@@ -81,6 +87,12 @@ class PicassoImageProvider private constructor(context: Context) : ImageProvider
             aPicasso.cancelRequest(imageView)
             onImageError()
         }
+    }
+
+    private fun addImageInteractions(imageView: ImageView): PhotoViewAttacher {
+        val photoViewAttacher = PhotoViewAttacher(imageView)
+        imageView.scaleType = ImageView.ScaleType.MATRIX
+        return photoViewAttacher
     }
 
 }

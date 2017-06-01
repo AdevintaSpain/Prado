@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
                     "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_skinner_550x960.png",
                     "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_cletus_550x960.png",
                     "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_brandine_550x960.png",
-                    "http://vignette4.wikia.nocookie.net/lossimpson/images/c/c4/The_Simpsons_characters.png/revision/20110629063200?path-prefix=es"
+                    "http://vignette4.wikia.nocookie.net/lossimpson/images/c/c4/The_Simpsons_characters.png/revision/20110629063200?path-prefix=es",
+                    ""
             )
 
             galleryIntent.putStringArrayListExtra(FullscreenGalleryActivity.EXTRA_LIST_ITEMS, imageUrlsList)

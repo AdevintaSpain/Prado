@@ -15,8 +15,6 @@
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:layout_centerInParent="true"
-      app:rvp_singlePageFling="true"
-      app:rvp_triggerOffset="0.25"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"

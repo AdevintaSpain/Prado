@@ -18,7 +18,6 @@ class FullscreenGalleryActivity : AppCompatActivity() {
         val EXTRA_LIST_ITEMS = "EXTRA_LIST_ITEMS"
         val EXTRA_LIST_INITIAL_INDEX = "EXTRA_LIST_INITIAL_INDEX"
         val EXTRA_LIST_FINAL_INDEX = "EXTRA_LIST_FINAL_INDEX"
-        val REQUEST_CODE = 1
         val INITIAL_INDEX = 0
         private val BUNDLE_PAGE_NUMBER = "BUNDLE_PAGE_NUMBER"
     }

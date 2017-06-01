@@ -29,7 +29,7 @@ dependencies {
   compile "com.android.support:recyclerview-v7:$supportLibVersion"
   compile "com.android.support:appcompat-v7:$supportLibVersion"
   compile 'com.android.support.constraint:constraint-layout:1.0.2'
-  compile('com.github.lsjwzh.RecyclerViewPager:lib:v1.1.2') {
+  compile('com.github.lsjwzh.RecyclerViewPager:lib:v1.1.1') {
     exclude module: 'recyclerview-v7'
   }
 
@@ -37,6 +37,7 @@ dependencies {
   compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
   compile "com.squareup.okhttp3:okhttp:3.6.0"
   compile "com.squareup.okhttp3:logging-interceptor:3.6.0"
+  compile 'com.github.chrisbanes:PhotoView:2.0.0'
 
   androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'

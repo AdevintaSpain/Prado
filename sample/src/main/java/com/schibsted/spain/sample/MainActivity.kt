@@ -2,7 +2,7 @@ package com.schibsted.spain.sample
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.schibsted.spain.fullscreenkallery.FullscreenGalleryActivity
+import com.schibsted.spain.fullscreenkallery.extensions.kalleryIntent
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                     "http://vignette4.wikia.nocookie.net/lossimpson/images/c/c4/The_Simpsons_characters.png/revision/20110629063200?path-prefix=es",
                     ""
             )
-            startActivity(FullscreenGalleryActivity.newIntent(this, imageUrlsList))
+            startActivity(kalleryIntent(imageUrlsList))
         }
     }
 }

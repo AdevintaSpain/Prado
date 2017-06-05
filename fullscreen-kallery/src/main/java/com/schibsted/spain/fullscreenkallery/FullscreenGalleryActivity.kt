@@ -1,6 +1,7 @@
 package com.schibsted.spain.fullscreenkallery
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -20,6 +21,23 @@ class FullscreenGalleryActivity : AppCompatActivity() {
         val EXTRA_LIST_FINAL_INDEX = "EXTRA_LIST_FINAL_INDEX"
         val INITIAL_INDEX = 0
         private val BUNDLE_PAGE_NUMBER = "BUNDLE_PAGE_NUMBER"
+
+        fun newIntent(context: Context, imageUrls: List<String>): Intent {
+            val intent = Intent(context, FullscreenGalleryActivity::class.java)
+
+            if (imageUrls is ArrayList) {
+                return createIntent(intent, imageUrls)
+            } else {
+                val imageUrlsArrayList = arrayListOf<String>()
+                imageUrls.forEach { imageUrlsArrayList.add(it) }
+                return createIntent(intent, imageUrlsArrayList)
+            }
+        }
+
+        private fun createIntent(intent: Intent, imageUrls: ArrayList<String>): Intent {
+            intent.putStringArrayListExtra(EXTRA_LIST_ITEMS, imageUrls)
+            return intent
+        }
     }
 
     private var totalItems: Int = 0

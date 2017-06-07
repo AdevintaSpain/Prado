@@ -10,23 +10,23 @@ import android.view.WindowManager
 
 
 fun ViewGroup.inflate(layoutRes: Int): View {
-    return LayoutInflater.from(context).inflate(layoutRes, this, false)
+  return LayoutInflater.from(context).inflate(layoutRes, this, false)
 }
 
 val WindowManager.screenWidth: Int get() {
-    val point = Point()
-    this.defaultDisplay.getSize(point)
-    return point.x
+  val point = Point()
+  this.defaultDisplay.getSize(point)
+  return point.x
 }
 
 val WindowManager.screenHeight: Int get() {
-    val point = Point()
-    this.defaultDisplay.getSize(point)
-    return point.y
+  val point = Point()
+  this.defaultDisplay.getSize(point)
+  return point.y
 }
 
 fun Context.isLandscape(): Boolean {
-    return Configuration.ORIENTATION_LANDSCAPE == this.resources.configuration.orientation
+  return Configuration.ORIENTATION_LANDSCAPE == this.resources.configuration.orientation
 }
 
 

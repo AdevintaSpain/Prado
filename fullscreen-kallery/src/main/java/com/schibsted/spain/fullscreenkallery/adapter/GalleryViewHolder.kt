@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.item_gallery.view.*
 
 
 class GalleryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    var itemImage: ImageView = itemView.itemImage
-    var itemImagePlaceholder: ImageView = itemView.itemImagePlaceholder
-    var itemImageError: ImageView = itemView.itemImageError
+  var itemImage: ImageView = itemView.itemImage
+  var itemImagePlaceholder: ImageView = itemView.itemImagePlaceholder
+  var itemImageError: ImageView = itemView.itemImageError
 }

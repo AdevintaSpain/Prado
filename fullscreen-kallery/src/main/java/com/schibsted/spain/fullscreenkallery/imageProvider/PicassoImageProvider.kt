@@ -18,81 +18,82 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 class PicassoImageProvider private constructor(context: Context) : ImageProvider {
 
-    var picasso: Picasso
-    var windowManager: WindowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-    lateinit private var onInternalError: OnInternalError
+  var picasso: Picasso
+  var windowManager: WindowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+  lateinit private var onInternalError: OnInternalError
 
-    companion object {
-        private lateinit var INSTANCE: PicassoImageProvider
-        private val initialized = AtomicBoolean()
+  companion object {
+    private lateinit var INSTANCE: PicassoImageProvider
+    private val initialized = AtomicBoolean()
 
-        fun getInstance(context: Context): PicassoImageProvider {
-            if (!initialized.getAndSet(true)) {
-                INSTANCE = PicassoImageProvider(context)
+    fun getInstance(context: Context): PicassoImageProvider {
+      if (!initialized.getAndSet(true)) {
+        INSTANCE = PicassoImageProvider(context)
+      }
+      return INSTANCE
+    }
+  }
+
+  init {
+    val picassoBuilder = Picasso.Builder(context)
+    picassoBuilder.listener { picasso, _, _ -> onInternalError.onError(picasso) }
+
+    val client = OkHttpClient().newBuilder()
+        .cache(OkHttp3Downloader.createDefaultCache(context))
+        .addInterceptor(
+            HttpLoggingInterceptor().apply {
+              level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
             }
-            return INSTANCE
-        }
+        )
+        .build()
+
+    picasso = picassoBuilder.downloader(OkHttp3Downloader(client)).build()
+  }
+
+  override fun loadImage(context: Context, imageUrl: String, imageView: ImageView, onImageSuccess: () -> Unit, onImageError: () -> Unit) {
+    val viewSize = calculateViewSize(context)
+    onInternalError = OnInternalError(imageView, onImageError)
+
+    val photoViewAttacher = addImageInteractions(imageView)
+
+    picasso.load(imageUrl)
+        .noFade()
+        .noPlaceholder()
+        .resize(viewSize.width, viewSize.height)
+        .into(imageView, object : Callback {
+          override fun onSuccess() {
+            photoViewAttacher.update()
+            onImageSuccess()
+          }
+
+          override fun onError() = Unit
+        })
+  }
+
+  private fun calculateViewSize(context: Context): ViewSize {
+    var width = 0
+    var height = 0
+
+    if (context.isLandscape()) {
+      height = windowManager.screenHeight
+    } else {
+      width = windowManager.screenWidth
     }
 
-    init {
-        val picassoBuilder = Picasso.Builder(context)
-        picassoBuilder.listener { picasso, _, _ -> onInternalError.onError(picasso) }
+    return ViewSize(width, height)
+  }
 
-        val client = OkHttpClient().newBuilder()
-                .cache(OkHttp3Downloader.createDefaultCache(context))
-                .addInterceptor(
-                        HttpLoggingInterceptor().apply {
-                            level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
-                        }
-                )
-                .build()
-
-        picasso = picassoBuilder.downloader(OkHttp3Downloader(client)).build()
+  private class OnInternalError(val imageView: ImageView, val onImageError: () -> Unit) {
+    fun onError(aPicasso: Picasso) {
+      aPicasso.cancelRequest(imageView)
+      onImageError()
     }
+  }
 
-    override fun loadImage(context: Context, imageUrl: String, imageView: ImageView, onImageSuccess: () -> Unit, onImageError: () -> Unit) {
-        val viewSize = calculateViewSize(context)
-        onInternalError = OnInternalError(imageView, onImageError)
-
-        val photoViewAttacher = addImageInteractions(imageView)
-
-        picasso.load(imageUrl)
-                .noFade()
-                .noPlaceholder()
-                .resize(viewSize.width, viewSize.height)
-                .into(imageView, object : Callback {
-                    override fun onSuccess() {
-                        photoViewAttacher.update()
-                        onImageSuccess()
-                    }
-                    override fun onError() = Unit
-                })
-    }
-
-    private fun calculateViewSize(context: Context): ViewSize {
-        var width = 0
-        var height = 0
-
-        if (context.isLandscape()) {
-            height = windowManager.screenHeight
-        } else {
-            width = windowManager.screenWidth
-        }
-
-        return ViewSize(width, height)
-    }
-
-    private class OnInternalError(val imageView: ImageView, val onImageError: () -> Unit) {
-        fun onError(aPicasso: Picasso) {
-            aPicasso.cancelRequest(imageView)
-            onImageError()
-        }
-    }
-
-    private fun addImageInteractions(imageView: ImageView): PhotoViewAttacher {
-        val photoViewAttacher = PhotoViewAttacher(imageView)
-        imageView.scaleType = ImageView.ScaleType.MATRIX
-        return photoViewAttacher
-    }
+  private fun addImageInteractions(imageView: ImageView): PhotoViewAttacher {
+    val photoViewAttacher = PhotoViewAttacher(imageView)
+    imageView.scaleType = ImageView.ScaleType.MATRIX
+    return photoViewAttacher
+  }
 
 }

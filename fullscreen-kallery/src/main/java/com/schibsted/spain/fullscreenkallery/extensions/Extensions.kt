@@ -12,36 +12,36 @@ import com.schibsted.spain.fullscreenkallery.FullscreenGalleryActivity
 
 
 fun ViewGroup.inflate(layoutRes: Int): View {
-    return LayoutInflater.from(context).inflate(layoutRes, this, false)
+  return LayoutInflater.from(context).inflate(layoutRes, this, false)
 }
 
 val WindowManager.screenWidth: Int get() {
-    val point = Point()
-    this.defaultDisplay.getSize(point)
-    return point.x
+  val point = Point()
+  this.defaultDisplay.getSize(point)
+  return point.x
 }
 
 val WindowManager.screenHeight: Int get() {
-    val point = Point()
-    this.defaultDisplay.getSize(point)
-    return point.y
+  val point = Point()
+  this.defaultDisplay.getSize(point)
+  return point.y
 }
 
 fun Context.isLandscape(): Boolean {
-    return Configuration.ORIENTATION_LANDSCAPE == this.resources.configuration.orientation
+  return Configuration.ORIENTATION_LANDSCAPE == this.resources.configuration.orientation
 }
 
 fun Context.buildFullscreenGalleryIntent(imageUrls: List<String>): Intent {
-    val imageUrlsArrayList : ArrayList<String>
-    when (imageUrls) {
-      is ArrayList -> imageUrlsArrayList = imageUrls
-      else -> {
-        imageUrlsArrayList = arrayListOf<String>()
-        imageUrls.forEach { imageUrlsArrayList.add(it) }
-      }
+  val imageUrlsArrayList: ArrayList<String>
+  when (imageUrls) {
+    is ArrayList -> imageUrlsArrayList = imageUrls
+    else -> {
+      imageUrlsArrayList = arrayListOf<String>()
+      imageUrls.forEach { imageUrlsArrayList.add(it) }
     }
-    return Intent(this, FullscreenGalleryActivity::class.java)
-        .putStringArrayListExtra(FullscreenGalleryActivity.EXTRA_LIST_ITEMS, imageUrlsArrayList)
+  }
+  return Intent(this, FullscreenGalleryActivity::class.java)
+      .putStringArrayListExtra(FullscreenGalleryActivity.EXTRA_LIST_ITEMS, imageUrlsArrayList)
 }
 
 

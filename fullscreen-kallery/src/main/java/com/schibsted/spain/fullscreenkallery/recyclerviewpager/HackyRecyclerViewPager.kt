@@ -8,9 +8,9 @@ import android.view.MotionEvent
 
 class HackyRecyclerViewPager(context: Context, attrs: AttributeSet) : RecyclerView(context, attrs) {
 
-    override fun onInterceptTouchEvent(e: MotionEvent?) = try {
-        super.onInterceptTouchEvent(e)
-    } catch (e: IllegalArgumentException) {
-        false
-    }
+  override fun onInterceptTouchEvent(e: MotionEvent?) = try {
+    super.onInterceptTouchEvent(e)
+  } catch (e: IllegalArgumentException) {
+    false
+  }
 }

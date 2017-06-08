@@ -32,16 +32,16 @@ fun Context.isLandscape(): Boolean {
 }
 
 fun Context.buildFullscreenGalleryIntent(imageUrls: List<String>): Intent {
-    val imageUrlsArrayList : ArrayList<String>
-    when (imageUrls) {
-      is ArrayList -> imageUrlsArrayList = imageUrls
-      else -> {
-        imageUrlsArrayList = arrayListOf<String>()
-        imageUrls.forEach { imageUrlsArrayList.add(it) }
-      }
+  val imageUrlsArrayList: ArrayList<String>
+  when (imageUrls) {
+    is ArrayList -> imageUrlsArrayList = imageUrls
+    else -> {
+      imageUrlsArrayList = arrayListOf<String>()
+      imageUrls.forEach { imageUrlsArrayList.add(it) }
     }
-    return Intent(this, FullscreenGalleryActivity::class.java)
-        .putStringArrayListExtra(FullscreenGalleryActivity.EXTRA_LIST_ITEMS, imageUrlsArrayList)
+  }
+  return Intent(this, FullscreenGalleryActivity::class.java)
+      .putStringArrayListExtra(FullscreenGalleryActivity.EXTRA_LIST_ITEMS, imageUrlsArrayList)
 }
 
 

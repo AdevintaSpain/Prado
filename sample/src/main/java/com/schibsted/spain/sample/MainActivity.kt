@@ -1,9 +1,8 @@
 package com.schibsted.spain.sample
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.schibsted.spain.fullscreenkallery.FullscreenGalleryActivity
+import com.schibsted.spain.fullscreenkallery.extensions.buildFullscreenGalleryIntent
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -13,8 +12,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         launcherButton.setOnClickListener {
-            val galleryIntent = Intent(this@MainActivity, FullscreenGalleryActivity::class.java)
-
             val imageUrlsList = arrayListOf(
                     "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/The_Simpsons_Logo.svg/2000px-The_Simpsons_Logo.svg.png",
                     "http://assets.fxnetworks.com/shows/the-simpsons/photos/simpsons-character/Homer/swsb_character_fact_homer_550x960.png",
@@ -33,10 +30,7 @@ class MainActivity : AppCompatActivity() {
                     "http://vignette4.wikia.nocookie.net/lossimpson/images/c/c4/The_Simpsons_characters.png/revision/20110629063200?path-prefix=es",
                     ""
             )
-
-            galleryIntent.putStringArrayListExtra(FullscreenGalleryActivity.EXTRA_LIST_ITEMS, imageUrlsList)
-
-            startActivity(galleryIntent)
+            startActivity(buildFullscreenGalleryIntent(imageUrlsList))
         }
     }
 }

@@ -1,1 +1,1 @@
-include ':fullscreen-kallery', ':sample'
+include ':fullscreen-kallery', ':sample', ':sample-java'

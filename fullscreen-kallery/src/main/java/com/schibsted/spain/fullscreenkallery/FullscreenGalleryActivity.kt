@@ -30,7 +30,7 @@ class FullscreenGalleryActivity : AppCompatActivity() {
   }
 
   private var totalItems: Int = 0
-  private var currentPage: Int = 0
+  private var currentIndex: Int = 0
   private var items: List<String> = arrayListOf()
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +51,7 @@ class FullscreenGalleryActivity : AppCompatActivity() {
 
   override fun onSaveInstanceState(outState: Bundle) {
     super.onSaveInstanceState(outState)
-    outState.putInt(BUNDLE_PAGE_NUMBER, currentPage)
+    outState.putInt(BUNDLE_PAGE_NUMBER, currentIndex)
   }
 
   override fun onBackPressed() {
@@ -63,7 +63,7 @@ class FullscreenGalleryActivity : AppCompatActivity() {
     galleryViewPager.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
     galleryViewPager.adapter = GalleryRecyclerAdapter(this, items, PicassoImageProvider.getInstance(this))
 
-    val snapHelper = GravityPagerSnapHelper(Gravity.START, false, GravitySnapHelper.SnapListener { position -> pagerIndicatorNumber.text = providePagerIndicatorText(position + 1, totalItems) })
+    val snapHelper = GravityPagerSnapHelper(Gravity.START, true, GravitySnapHelper.SnapListener { position -> pagerIndicatorNumber.text = providePagerIndicatorText(position) })
     snapHelper.attachToRecyclerView(galleryViewPager)
   }
 
@@ -76,22 +76,22 @@ class FullscreenGalleryActivity : AppCompatActivity() {
 
   private fun setGalleryResult() {
     val data = Intent()
-    data.putExtra(EXTRA_LIST_FINAL_INDEX, currentPage - 1)
+    data.putExtra(EXTRA_LIST_FINAL_INDEX, currentIndex - 1)
     setResult(Activity.RESULT_OK, data)
   }
 
   private fun initPageIndicator(savedInstanceState: Bundle?) {
     if (savedInstanceState != null) {
-      currentPage = savedInstanceState.getInt(BUNDLE_PAGE_NUMBER)
+      currentIndex = savedInstanceState.getInt(BUNDLE_PAGE_NUMBER)
     } else {
-      currentPage = intent.getIntExtra(EXTRA_LIST_INITIAL_INDEX, INITIAL_INDEX)
+      currentIndex = intent.getIntExtra(EXTRA_LIST_INITIAL_INDEX, INITIAL_INDEX)
     }
-    pagerIndicatorNumber.text = providePagerIndicatorText(currentPage, totalItems)
-    galleryViewPager.scrollToPosition(currentPage)
+    pagerIndicatorNumber.text = providePagerIndicatorText(currentIndex)
+    galleryViewPager.scrollToPosition(currentIndex)
   }
 
-  private fun providePagerIndicatorText(page: Int, totalPages: Int): String {
-    this.currentPage = page
-    return String.format(resources.getString(R.string.pageIndicator_text_number), currentPage, totalPages)
+  private fun providePagerIndicatorText(index: Int): String {
+    this.currentIndex = index
+    return String.format(resources.getString(R.string.pageIndicator_text_number), currentIndex + 1, totalItems)
   }
 }

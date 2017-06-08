@@ -4,8 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import com.schibsted.spain.fullscreenkallery.FullscreenGalleryIntentCreator;
+import com.schibsted.spain.fullscreenkallery.FullscreenGalleryActivity;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     launcherButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        ArrayList<String> imageUrlsList = new ArrayList<>();
+        List<String> imageUrlsList = new ArrayList<>();
 
         imageUrlsList.add(
             "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/The_Simpsons_Logo.svg/2000px"
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 + "/revision/20110629063200?path-prefix=es");
         imageUrlsList.add("");
 
-        startActivity(FullscreenGalleryIntentCreator.createGalleryIntent(MainActivity.this, imageUrlsList));
+        startActivity(FullscreenGalleryActivity.buildFullscreenGalleryIntent(MainActivity.this, imageUrlsList));
       }
     });
   }

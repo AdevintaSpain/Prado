@@ -1,12 +1,14 @@
 package com.schibsted.spain.fullscreenkallery.extensions
 
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Point
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import com.schibsted.spain.fullscreenkallery.FullscreenGalleryActivity
 
 
 fun ViewGroup.inflate(layoutRes: Int): View {
@@ -27,6 +29,19 @@ val WindowManager.screenHeight: Int get() {
 
 fun Context.isLandscape(): Boolean {
   return Configuration.ORIENTATION_LANDSCAPE == this.resources.configuration.orientation
+}
+
+fun Context.buildFullscreenGalleryIntent(imageUrls: List<String>): Intent {
+    val imageUrlsArrayList : ArrayList<String>
+    when (imageUrls) {
+      is ArrayList -> imageUrlsArrayList = imageUrls
+      else -> {
+        imageUrlsArrayList = arrayListOf<String>()
+        imageUrls.forEach { imageUrlsArrayList.add(it) }
+      }
+    }
+    return Intent(this, FullscreenGalleryActivity::class.java)
+        .putStringArrayListExtra(FullscreenGalleryActivity.EXTRA_LIST_ITEMS, imageUrlsArrayList)
 }
 
 

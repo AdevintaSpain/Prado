@@ -1,6 +1,7 @@
 package com.schibsted.spain.fullscreenkallery
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -9,6 +10,7 @@ import android.view.Gravity
 import com.github.rubensousa.gravitysnaphelper.GravityPagerSnapHelper
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper
 import com.schibsted.spain.fullscreenkallery.adapter.GalleryRecyclerAdapter
+import com.schibsted.spain.fullscreenkallery.extensions.buildFullscreenGalleryIntent
 import com.schibsted.spain.fullscreenkallery.imageProvider.PicassoImageProvider
 import kotlinx.android.synthetic.main.activity_fullscreen_gallery.*
 
@@ -20,6 +22,11 @@ class FullscreenGalleryActivity : AppCompatActivity() {
     val EXTRA_LIST_FINAL_INDEX = "EXTRA_LIST_FINAL_INDEX"
     val INITIAL_INDEX = 0
     private val BUNDLE_PAGE_NUMBER = "BUNDLE_PAGE_NUMBER"
+
+    @JvmStatic
+    fun buildFullscreenGalleryIntent(context: Context, imageUrls: List<String>): Intent {
+      return context.buildFullscreenGalleryIntent(imageUrls)
+    }
   }
 
   private var totalItems: Int = 0

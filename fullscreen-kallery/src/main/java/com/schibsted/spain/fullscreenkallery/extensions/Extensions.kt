@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import com.schibsted.spain.fullscreenkallery.FullscreenGalleryActivity
+import com.schibsted.spain.fullscreenkallery.imageProvider.ViewSize
 
 
 fun ViewGroup.inflate(layoutRes: Int): View {
@@ -25,6 +26,19 @@ val WindowManager.screenHeight: Int get() {
   val point = Point()
   this.defaultDisplay.getSize(point)
   return point.y
+}
+
+fun WindowManager.calculateViewSize(context: Context): ViewSize {
+  var width = 0
+  var height = 0
+
+  if (context.isLandscape()) {
+    height = screenHeight
+  } else {
+    width = screenWidth
+  }
+
+  return ViewSize(width, height)
 }
 
 fun Context.isLandscape(): Boolean {

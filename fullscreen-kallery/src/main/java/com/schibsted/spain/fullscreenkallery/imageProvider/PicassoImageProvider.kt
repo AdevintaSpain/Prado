@@ -6,6 +6,7 @@ import android.widget.ImageView
 import com.github.chrisbanes.photoview.PhotoViewAttacher
 import com.jakewharton.picasso.OkHttp3Downloader
 import com.schibsted.spain.fullscreenkallery.BuildConfig
+import com.schibsted.spain.fullscreenkallery.extensions.calculateViewSize
 import com.schibsted.spain.fullscreenkallery.extensions.isLandscape
 import com.schibsted.spain.fullscreenkallery.extensions.screenHeight
 import com.schibsted.spain.fullscreenkallery.extensions.screenWidth
@@ -51,7 +52,7 @@ class PicassoImageProvider private constructor(context: Context) : ImageProvider
   }
 
   override fun loadImage(context: Context, imageUrl: String, imageView: ImageView, onImageSuccess: () -> Unit, onImageError: () -> Unit) {
-    val viewSize = calculateViewSize(context)
+    val viewSize = windowManager.calculateViewSize(context)
     onInternalError = OnInternalError(imageView, onImageError)
 
     val photoViewAttacher = addImageInteractions(imageView)
@@ -66,21 +67,10 @@ class PicassoImageProvider private constructor(context: Context) : ImageProvider
             onImageSuccess()
           }
 
-          override fun onError() = Unit
+          override fun onError() {
+            onImageError()
+          }
         })
-  }
-
-  private fun calculateViewSize(context: Context): ViewSize {
-    var width = 0
-    var height = 0
-
-    if (context.isLandscape()) {
-      height = windowManager.screenHeight
-    } else {
-      width = windowManager.screenWidth
-    }
-
-    return ViewSize(width, height)
   }
 
   private class OnInternalError(val imageView: ImageView, val onImageError: () -> Unit) {

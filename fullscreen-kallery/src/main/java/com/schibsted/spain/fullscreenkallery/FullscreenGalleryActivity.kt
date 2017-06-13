@@ -11,6 +11,7 @@ import com.github.rubensousa.gravitysnaphelper.GravityPagerSnapHelper
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper
 import com.schibsted.spain.fullscreenkallery.adapter.GalleryRecyclerAdapter
 import com.schibsted.spain.fullscreenkallery.extensions.buildFullscreenGalleryIntent
+import com.schibsted.spain.fullscreenkallery.imageProvider.GlideImageProvider
 import com.schibsted.spain.fullscreenkallery.imageProvider.PicassoImageProvider
 import kotlinx.android.synthetic.main.activity_fullscreen_gallery.*
 
@@ -61,11 +62,15 @@ class FullscreenGalleryActivity : AppCompatActivity() {
 
   private fun setupGalleryViewPager() {
     galleryViewPager.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-    galleryViewPager.adapter = GalleryRecyclerAdapter(this, items, PicassoImageProvider.getInstance(this))
+    galleryViewPager.adapter = GalleryRecyclerAdapter(this, items, provideImageProvider())
+//    FIXME galleryViewPager.recycledViewPool.setMaxRecycledViews(0, 0)
 
-    val snapHelper = GravityPagerSnapHelper(Gravity.START, true, GravitySnapHelper.SnapListener { position -> pagerIndicatorNumber.text = providePagerIndicatorText(position) })
+    val snapHelper = GravityPagerSnapHelper(Gravity.START, true, GravitySnapHelper.SnapListener {
+      position -> pagerIndicatorNumber.text = providePagerIndicatorText(position) })
     snapHelper.attachToRecyclerView(galleryViewPager)
   }
+
+  private fun provideImageProvider() = GlideImageProvider.getInstance(this)
 
   private fun initCloseIcon() {
     galleryCloseIcon.setOnClickListener {

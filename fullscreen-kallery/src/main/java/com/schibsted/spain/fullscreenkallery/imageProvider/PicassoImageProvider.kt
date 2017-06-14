@@ -34,12 +34,13 @@ class PicassoImageProvider(context: Context) : ImageProvider {
   }
 
   override fun loadError(context: Context, imageView: ImageView) {
+    imageView.scaleType = ImageView.ScaleType.FIT_CENTER
     imageView.centerInParent()
     picasso.load(R.drawable.nophoto).into(imageView)
   }
 
   override fun loadImage(context: Context, imageUrl: String, imageView: ImageView) {
-    val photoViewAttacher = addImageInteractions(imageView)
+    val photoViewAttacher = PhotoViewAttacher(imageView)
 
     picasso.load(imageUrl)
         .noFade()
@@ -47,20 +48,14 @@ class PicassoImageProvider(context: Context) : ImageProvider {
         .error(R.drawable.nophoto)
         .into(imageView, object : Callback {
           override fun onSuccess() {
-            photoViewAttacher.update()
+            imageView.scaleType = ImageView.ScaleType.MATRIX
             imageView.layoutParams = RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT)
+            photoViewAttacher.update()
           }
 
           override fun onError() {
           }
         })
   }
-
-  private fun addImageInteractions(imageView: ImageView): PhotoViewAttacher {
-    val photoViewAttacher = PhotoViewAttacher(imageView)
-    imageView.scaleType = ImageView.ScaleType.MATRIX
-    return photoViewAttacher
-  }
-
 }

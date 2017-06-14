@@ -19,13 +19,9 @@ fun ViewGroup.inflate(layoutRes: Int): View {
 
 fun Context.buildFullscreenGalleryIntent(imageUrls: List<String>,
                                          imageProviderType: ImageProvider.ImageProviderType = ImageProvider.ImageProviderType.PICASSO): Intent {
-  val imageUrlsArrayList: ArrayList<String>
-  when (imageUrls) {
-    is ArrayList -> imageUrlsArrayList = imageUrls
-    else -> {
-      imageUrlsArrayList = arrayListOf<String>()
-      imageUrlsArrayList.addAll(imageUrls)
-    }
+  val imageUrlsArrayList = when (imageUrls) {
+    is ArrayList -> imageUrls
+    else -> ArrayList(imageUrls)
   }
   return Intent(this, FullscreenGalleryActivity::class.java)
       .putStringArrayListExtra(FullscreenGalleryActivity.EXTRA_LIST_ITEMS, imageUrlsArrayList)

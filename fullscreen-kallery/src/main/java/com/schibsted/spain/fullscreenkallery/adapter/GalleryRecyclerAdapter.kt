@@ -1,35 +1,21 @@
 package com.schibsted.spain.fullscreenkallery.adapter
 
 import android.content.Context
-import android.graphics.Bitmap
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.bumptech.glide.BitmapRequestBuilder
-import com.bumptech.glide.GenericRequestBuilder
-import com.bumptech.glide.Glide
-import com.bumptech.glide.ListPreloader
 import com.schibsted.spain.fullscreenkallery.R
 import com.schibsted.spain.fullscreenkallery.extensions.inflate
 import com.schibsted.spain.fullscreenkallery.imageProvider.ImageProvider
 
 class GalleryRecyclerAdapter(val context: Context, val items: List<String>, val imageProvider: ImageProvider)
-  : RecyclerView.Adapter<GalleryViewHolder>(), ListPreloader.PreloadModelProvider<String>, ListPreloader.PreloadSizeProvider<String> {
-
-  override fun getPreloadSize(item: String?, adapterPosition: Int, perItemPosition: Int) = stolenSize
-
-  override fun getPreloadRequestBuilder(item: String?): GenericRequestBuilder<*, *, *, *> = builder.load(item)
-
-  override fun getPreloadItems(position: Int): MutableList<String> = arrayListOf(items[position])
+  : RecyclerView.Adapter<GalleryViewHolder>() {
 
   lateinit var imageView: ImageView
-  var builder: BitmapRequestBuilder<String, Bitmap>
-  private var stolenSize: IntArray? = null
 
   init {
     setHasStableIds(true)
-    builder = Glide.with(context).fromString().asBitmap().fitCenter()
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GalleryViewHolder {

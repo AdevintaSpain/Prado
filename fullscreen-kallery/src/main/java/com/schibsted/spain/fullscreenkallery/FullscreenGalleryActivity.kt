@@ -12,6 +12,7 @@ import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper
 import com.schibsted.spain.fullscreenkallery.adapter.GalleryRecyclerAdapter
 import com.schibsted.spain.fullscreenkallery.extensions.buildFullscreenGalleryIntent
 import com.schibsted.spain.fullscreenkallery.imageProvider.GlideImageProvider
+import com.schibsted.spain.fullscreenkallery.imageProvider.ImageProvider
 import com.schibsted.spain.fullscreenkallery.imageProvider.PicassoImageProvider
 import kotlinx.android.synthetic.main.activity_fullscreen_gallery.*
 
@@ -21,18 +22,21 @@ class FullscreenGalleryActivity : AppCompatActivity() {
     val EXTRA_LIST_ITEMS = "EXTRA_LIST_ITEMS"
     val EXTRA_LIST_INITIAL_INDEX = "EXTRA_LIST_INITIAL_INDEX"
     val EXTRA_LIST_FINAL_INDEX = "EXTRA_LIST_FINAL_INDEX"
+    val EXTRA_IMAGE_PROVIDER = "EXTRA_IMAGE_PROVIDER"
     val INITIAL_INDEX = 0
     private val BUNDLE_PAGE_NUMBER = "BUNDLE_PAGE_NUMBER"
 
     @JvmStatic
-    fun buildFullscreenGalleryIntent(context: Context, imageUrls: List<String>): Intent {
-      return context.buildFullscreenGalleryIntent(imageUrls)
+    fun buildFullscreenGalleryIntent(context: Context, imageUrls: List<String>,
+                                     imageProviderType: ImageProvider.ImageProviderType = ImageProvider.ImageProviderType.PICASSO): Intent {
+      return context.buildFullscreenGalleryIntent(imageUrls, imageProviderType)
     }
   }
 
   private var totalItems: Int = 0
   private var currentIndex: Int = 0
   private var items: List<String> = arrayListOf()
+  lateinit private var imageProviderType : ImageProvider.ImageProviderType
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -42,6 +46,12 @@ class FullscreenGalleryActivity : AppCompatActivity() {
       items = intent.getStringArrayListExtra(EXTRA_LIST_ITEMS)
     }
     totalItems = items.size
+
+    if (intent.hasExtra(EXTRA_IMAGE_PROVIDER)) {
+      imageProviderType = ImageProvider.ImageProviderType.valueOf(intent.getStringExtra(EXTRA_IMAGE_PROVIDER))
+    } else {
+      imageProviderType = ImageProvider.ImageProviderType.PICASSO
+    }
 
     setupGalleryViewPager()
 
@@ -63,14 +73,18 @@ class FullscreenGalleryActivity : AppCompatActivity() {
   private fun setupGalleryViewPager() {
     galleryViewPager.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
     galleryViewPager.adapter = GalleryRecyclerAdapter(this, items, provideImageProvider())
-//    FIXME galleryViewPager.recycledViewPool.setMaxRecycledViews(0, 0)
 
     val snapHelper = GravityPagerSnapHelper(Gravity.START, true, GravitySnapHelper.SnapListener {
       position -> pagerIndicatorNumber.text = providePagerIndicatorText(position) })
     snapHelper.attachToRecyclerView(galleryViewPager)
   }
 
-  private fun provideImageProvider() = GlideImageProvider.getInstance(this)
+  private fun provideImageProvider() : ImageProvider {
+    when (imageProviderType) {
+      ImageProvider.ImageProviderType.PICASSO -> return PicassoImageProvider(this)
+      ImageProvider.ImageProviderType.GLIDE -> return GlideImageProvider()
+    }
+  }
 
   private fun initCloseIcon() {
     galleryCloseIcon.setOnClickListener {

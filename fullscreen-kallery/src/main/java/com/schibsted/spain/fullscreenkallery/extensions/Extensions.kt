@@ -8,7 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.ImageView
+import android.widget.RelativeLayout
 import com.schibsted.spain.fullscreenkallery.FullscreenGalleryActivity
+import com.schibsted.spain.fullscreenkallery.imageProvider.ImageProvider
 import com.schibsted.spain.fullscreenkallery.imageProvider.ViewSize
 
 
@@ -45,7 +48,8 @@ fun Context.isLandscape(): Boolean {
   return Configuration.ORIENTATION_LANDSCAPE == this.resources.configuration.orientation
 }
 
-fun Context.buildFullscreenGalleryIntent(imageUrls: List<String>): Intent {
+fun Context.buildFullscreenGalleryIntent(imageUrls: List<String>,
+                                         imageProviderType: ImageProvider.ImageProviderType = ImageProvider.ImageProviderType.PICASSO): Intent {
   val imageUrlsArrayList: ArrayList<String>
   when (imageUrls) {
     is ArrayList -> imageUrlsArrayList = imageUrls
@@ -56,6 +60,13 @@ fun Context.buildFullscreenGalleryIntent(imageUrls: List<String>): Intent {
   }
   return Intent(this, FullscreenGalleryActivity::class.java)
       .putStringArrayListExtra(FullscreenGalleryActivity.EXTRA_LIST_ITEMS, imageUrlsArrayList)
+      .putExtra(FullscreenGalleryActivity.EXTRA_IMAGE_PROVIDER, imageProviderType.name)
+}
+
+fun ImageView.centerInParent() {
+  val relativeLayoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
+  relativeLayoutParams .addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
+  layoutParams = relativeLayoutParams
 }
 
 

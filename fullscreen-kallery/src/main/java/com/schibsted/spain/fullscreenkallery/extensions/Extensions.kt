@@ -30,8 +30,7 @@ fun Context.buildFullscreenGalleryIntent(imageUrls: List<String>,
       .putExtra(FullscreenGalleryActivity.EXTRA_IMAGE_PROVIDER, imageProviderType.name)
 }
 
-fun ImageView.centerInParent() {
-  val relativeLayoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
+fun ImageView.centerInParent(relativeLayoutParams: RelativeLayout.LayoutParams) {
   relativeLayoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
   layoutParams = relativeLayoutParams
 }

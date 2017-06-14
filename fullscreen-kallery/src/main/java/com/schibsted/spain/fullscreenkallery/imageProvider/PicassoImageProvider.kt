@@ -35,7 +35,7 @@ class PicassoImageProvider(context: Context) : ImageProvider {
 
   override fun loadError(context: Context, imageView: ImageView) {
     imageView.scaleType = ImageView.ScaleType.FIT_CENTER
-    imageView.centerInParent()
+    imageView.centerInParent(RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT))
     picasso.load(R.drawable.nophoto).into(imageView)
   }
 
@@ -46,7 +46,7 @@ class PicassoImageProvider(context: Context) : ImageProvider {
         .noFade()
         .placeholder(R.drawable.placeholder)
         .error(R.drawable.nophoto)
-        .into(imageView, object : Callback {
+        .into(imageView, object : Callback { // TODO try Callback extension into({},{})
           override fun onSuccess() {
             imageView.scaleType = ImageView.ScaleType.MATRIX
             imageView.layoutParams = RelativeLayout.LayoutParams(

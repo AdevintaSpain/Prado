@@ -15,13 +15,13 @@ internal class KalleryGlideTarget(val imageView: ImageView, val photoViewAttache
 
   override fun onLoadStarted(placeholder: Drawable?) {
     imageView.scaleType = ImageView.ScaleType.CENTER_CROP
-    imageView.centerInParent()
+    imageView.centerInParent(RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT))
     super.onLoadStarted(placeholder)
   }
 
   override fun onLoadFailed(e: Exception?, errorDrawable: Drawable?) {
     imageView.scaleType = ImageView.ScaleType.CENTER_CROP
-    imageView.centerInParent()
+    imageView.centerInParent(RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT))
     super.onLoadFailed(e, errorDrawable)
   }
 

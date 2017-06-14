@@ -2,17 +2,13 @@ package com.schibsted.spain.fullscreenkallery.extensions
 
 import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
-import android.graphics.Point
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import com.schibsted.spain.fullscreenkallery.FullscreenGalleryActivity
 import com.schibsted.spain.fullscreenkallery.imageProvider.ImageProvider
-import com.schibsted.spain.fullscreenkallery.imageProvider.ViewSize
 
 
 fun ViewGroup.inflate(layoutRes: Int): View {
@@ -36,7 +32,7 @@ fun Context.buildFullscreenGalleryIntent(imageUrls: List<String>,
 
 fun ImageView.centerInParent() {
   val relativeLayoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
-  relativeLayoutParams .addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
+  relativeLayoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
   layoutParams = relativeLayoutParams
 }
 

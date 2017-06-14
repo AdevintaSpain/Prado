@@ -19,35 +19,6 @@ fun ViewGroup.inflate(layoutRes: Int): View {
   return LayoutInflater.from(context).inflate(layoutRes, this, false)
 }
 
-val WindowManager.screenWidth: Int get() {
-  val point = Point()
-  this.defaultDisplay.getSize(point)
-  return point.x
-}
-
-val WindowManager.screenHeight: Int get() {
-  val point = Point()
-  this.defaultDisplay.getSize(point)
-  return point.y
-}
-
-fun WindowManager.calculateViewSize(context: Context): ViewSize {
-  var width = 0
-  var height = 0
-
-  if (context.isLandscape()) {
-    height = screenHeight
-  } else {
-    width = screenWidth
-  }
-
-  return ViewSize(width, height)
-}
-
-fun Context.isLandscape(): Boolean {
-  return Configuration.ORIENTATION_LANDSCAPE == this.resources.configuration.orientation
-}
-
 fun Context.buildFullscreenGalleryIntent(imageUrls: List<String>,
                                          imageProviderType: ImageProvider.ImageProviderType = ImageProvider.ImageProviderType.PICASSO): Intent {
   val imageUrlsArrayList: ArrayList<String>

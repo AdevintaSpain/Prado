@@ -17,7 +17,7 @@ class GlideImageProvider : ImageProvider {
     Glide.with(context)
         .load(imageUrl)
         .error(R.drawable.nophoto)
-        .placeholder(R.drawable.placeholder)
+        .thumbnail(0.10f)
         .into(KalleryGlideTarget(imageView, PhotoViewAttacher(imageView)))
   }
 }

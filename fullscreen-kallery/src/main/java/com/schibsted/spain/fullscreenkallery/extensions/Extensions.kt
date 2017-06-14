@@ -9,6 +9,8 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import com.schibsted.spain.fullscreenkallery.FullscreenGalleryActivity
 import com.schibsted.spain.fullscreenkallery.imageProvider.ImageProvider
+import com.squareup.picasso.Callback
+import com.squareup.picasso.RequestCreator
 
 
 fun ViewGroup.inflate(layoutRes: Int): View {
@@ -33,6 +35,17 @@ fun Context.buildFullscreenGalleryIntent(imageUrls: List<String>,
 fun ImageView.centerInParent(relativeLayoutParams: RelativeLayout.LayoutParams) {
   relativeLayoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
   layoutParams = relativeLayoutParams
+}
+
+fun RequestCreator.into(imageView: ImageView, onImageSuccess: () -> Unit) {
+  into(imageView, object : Callback {
+    override fun onSuccess() {
+      onImageSuccess()
+    }
+
+    override fun onError() {
+    }
+  })
 }
 
 

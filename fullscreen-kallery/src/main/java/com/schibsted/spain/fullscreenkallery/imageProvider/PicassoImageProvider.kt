@@ -8,7 +8,7 @@ import com.jakewharton.picasso.OkHttp3Downloader
 import com.schibsted.spain.fullscreenkallery.BuildConfig
 import com.schibsted.spain.fullscreenkallery.R
 import com.schibsted.spain.fullscreenkallery.extensions.centerInParent
-import com.squareup.picasso.Callback
+import com.schibsted.spain.fullscreenkallery.extensions.into
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -46,16 +46,11 @@ class PicassoImageProvider(context: Context) : ImageProvider {
         .noFade()
         .placeholder(R.drawable.placeholder)
         .error(R.drawable.nophoto)
-        .into(imageView, object : Callback { // TODO try Callback extension into({},{})
-          override fun onSuccess() {
-            imageView.scaleType = ImageView.ScaleType.MATRIX
-            imageView.layoutParams = RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT)
-            photoViewAttacher.update()
-          }
-
-          override fun onError() {
-          }
+        .into(imageView, {
+          imageView.scaleType = ImageView.ScaleType.MATRIX
+          imageView.layoutParams = RelativeLayout.LayoutParams(
+              RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT)
+          photoViewAttacher.update()
         })
   }
 }

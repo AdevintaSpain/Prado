@@ -27,6 +27,7 @@ class FullscreenGalleryActivity : AppCompatActivity() {
     private val BUNDLE_PAGE_NUMBER = "BUNDLE_PAGE_NUMBER"
 
     @JvmStatic
+    @JvmOverloads
     fun buildFullscreenGalleryIntent(context: Context, imageUrls: List<String>,
                                      imageProviderType: ImageProvider.ImageProviderType = ImageProvider.ImageProviderType.PICASSO): Intent {
       return context.buildFullscreenGalleryIntent(imageUrls, imageProviderType)

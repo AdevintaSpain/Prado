@@ -22,7 +22,7 @@ fun Context.buildFullscreenGalleryIntent(imageUrls: List<String>,
     is ArrayList -> imageUrlsArrayList = imageUrls
     else -> {
       imageUrlsArrayList = arrayListOf<String>()
-      imageUrls.forEach { imageUrlsArrayList.add(it) }
+      imageUrlsArrayList.addAll(imageUrls)
     }
   }
   return Intent(this, FullscreenGalleryActivity::class.java)

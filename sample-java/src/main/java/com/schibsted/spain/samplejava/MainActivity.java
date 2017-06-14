@@ -54,8 +54,7 @@ public class MainActivity extends AppCompatActivity {
     launcherPicassoButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        startActivity(FullscreenGalleryActivity.buildFullscreenGalleryIntent(MainActivity.this, imageUrlsList,
-            ImageProvider.ImageProviderType.PICASSO));
+        startActivity(FullscreenGalleryActivity.buildFullscreenGalleryIntent(MainActivity.this, imageUrlsList));
       }
     });
 

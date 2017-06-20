@@ -9,6 +9,10 @@ import com.schibsted.spain.fullscreenkallery.R
 
 class GlideImageProvider : ImageProvider {
 
+  companion object {
+    private val IMAGE_QUALITY_1_PERCENT = 0.01f
+  }
+
   override fun loadError(context: Context, imageView: ImageView) {
     loadImage(context, "", imageView)
   }
@@ -18,7 +22,7 @@ class GlideImageProvider : ImageProvider {
         .load(imageUrl)
         .error(R.drawable.nophoto)
         .placeholder(R.drawable.placeholder)
-        .thumbnail(0.01f)
+        .thumbnail(IMAGE_QUALITY_1_PERCENT)
         .into(KalleryGlideTarget(imageView, PhotoViewAttacher(imageView)))
   }
 }

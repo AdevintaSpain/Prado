@@ -11,6 +11,8 @@ import com.github.rubensousa.gravitysnaphelper.GravityPagerSnapHelper
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper
 import com.schibsted.spain.fullscreenkallery.adapter.GalleryRecyclerAdapter
 import com.schibsted.spain.fullscreenkallery.extensions.buildFullscreenGalleryIntent
+import com.schibsted.spain.fullscreenkallery.imageProvider.GlideImageProvider
+import com.schibsted.spain.fullscreenkallery.imageProvider.ImageProvider
 import com.schibsted.spain.fullscreenkallery.imageProvider.PicassoImageProvider
 import kotlinx.android.synthetic.main.activity_fullscreen_gallery.*
 
@@ -20,18 +22,22 @@ class FullscreenGalleryActivity : AppCompatActivity() {
     val EXTRA_LIST_ITEMS = "EXTRA_LIST_ITEMS"
     val EXTRA_LIST_INITIAL_INDEX = "EXTRA_LIST_INITIAL_INDEX"
     val EXTRA_LIST_FINAL_INDEX = "EXTRA_LIST_FINAL_INDEX"
+    val EXTRA_IMAGE_PROVIDER = "EXTRA_IMAGE_PROVIDER"
     val INITIAL_INDEX = 0
     private val BUNDLE_PAGE_NUMBER = "BUNDLE_PAGE_NUMBER"
 
     @JvmStatic
-    fun buildFullscreenGalleryIntent(context: Context, imageUrls: List<String>): Intent {
-      return context.buildFullscreenGalleryIntent(imageUrls)
+    @JvmOverloads
+    fun buildFullscreenGalleryIntent(context: Context, imageUrls: List<String>,
+                                     imageProviderType: ImageProvider.ImageProviderType = ImageProvider.ImageProviderType.PICASSO): Intent {
+      return context.buildFullscreenGalleryIntent(imageUrls, imageProviderType)
     }
   }
 
   private var totalItems: Int = 0
-  private var currentPage: Int = 0
+  private var currentIndex: Int = 0
   private var items: List<String> = arrayListOf()
+  lateinit private var imageProviderType : ImageProvider.ImageProviderType
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -42,6 +48,12 @@ class FullscreenGalleryActivity : AppCompatActivity() {
     }
     totalItems = items.size
 
+    if (intent.hasExtra(EXTRA_IMAGE_PROVIDER)) {
+      imageProviderType = ImageProvider.ImageProviderType.valueOf(intent.getStringExtra(EXTRA_IMAGE_PROVIDER))
+    } else {
+      imageProviderType = ImageProvider.ImageProviderType.PICASSO
+    }
+
     setupGalleryViewPager()
 
     initCloseIcon()
@@ -51,7 +63,7 @@ class FullscreenGalleryActivity : AppCompatActivity() {
 
   override fun onSaveInstanceState(outState: Bundle) {
     super.onSaveInstanceState(outState)
-    outState.putInt(BUNDLE_PAGE_NUMBER, currentPage)
+    outState.putInt(BUNDLE_PAGE_NUMBER, currentIndex)
   }
 
   override fun onBackPressed() {
@@ -61,10 +73,18 @@ class FullscreenGalleryActivity : AppCompatActivity() {
 
   private fun setupGalleryViewPager() {
     galleryViewPager.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-    galleryViewPager.adapter = GalleryRecyclerAdapter(this, items, PicassoImageProvider.getInstance(this))
+    galleryViewPager.adapter = GalleryRecyclerAdapter(this, items, provideImageProvider())
 
-    val snapHelper = GravityPagerSnapHelper(Gravity.START, false, GravitySnapHelper.SnapListener { position -> pagerIndicatorNumber.text = providePagerIndicatorText(position + 1, totalItems) })
+    val snapHelper = GravityPagerSnapHelper(Gravity.START, true, GravitySnapHelper.SnapListener {
+      position -> pagerIndicatorNumber.text = providePagerIndicatorText(position) })
     snapHelper.attachToRecyclerView(galleryViewPager)
+  }
+
+  private fun provideImageProvider() : ImageProvider {
+    when (imageProviderType) {
+      ImageProvider.ImageProviderType.PICASSO -> return PicassoImageProvider(this)
+      ImageProvider.ImageProviderType.GLIDE -> return GlideImageProvider()
+    }
   }
 
   private fun initCloseIcon() {
@@ -76,22 +96,22 @@ class FullscreenGalleryActivity : AppCompatActivity() {
 
   private fun setGalleryResult() {
     val data = Intent()
-    data.putExtra(EXTRA_LIST_FINAL_INDEX, currentPage - 1)
+    data.putExtra(EXTRA_LIST_FINAL_INDEX, currentIndex - 1)
     setResult(Activity.RESULT_OK, data)
   }
 
   private fun initPageIndicator(savedInstanceState: Bundle?) {
     if (savedInstanceState != null) {
-      currentPage = savedInstanceState.getInt(BUNDLE_PAGE_NUMBER)
+      currentIndex = savedInstanceState.getInt(BUNDLE_PAGE_NUMBER)
     } else {
-      currentPage = intent.getIntExtra(EXTRA_LIST_INITIAL_INDEX, INITIAL_INDEX)
+      currentIndex = intent.getIntExtra(EXTRA_LIST_INITIAL_INDEX, INITIAL_INDEX)
     }
-    pagerIndicatorNumber.text = providePagerIndicatorText(currentPage, totalItems)
-    galleryViewPager.scrollToPosition(currentPage)
+    pagerIndicatorNumber.text = providePagerIndicatorText(currentIndex)
+    galleryViewPager.scrollToPosition(currentIndex)
   }
 
-  private fun providePagerIndicatorText(page: Int, totalPages: Int): String {
-    this.currentPage = page
-    return String.format(resources.getString(R.string.pageIndicator_text_number), currentPage, totalPages)
+  private fun providePagerIndicatorText(index: Int): String {
+    this.currentIndex = index
+    return String.format(resources.getString(R.string.pageIndicator_text_number), currentIndex + 1, totalItems)
   }
 }

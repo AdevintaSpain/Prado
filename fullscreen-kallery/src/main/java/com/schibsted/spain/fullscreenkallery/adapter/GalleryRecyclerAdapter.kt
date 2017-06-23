@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.schibsted.spain.fullscreenkallery.R
-import com.schibsted.spain.fullscreenkallery.extensions.drawableCompat
 import com.schibsted.spain.fullscreenkallery.extensions.inflate
 import com.schibsted.spain.fullscreenkallery.imageProvider.ImageProvider
 
@@ -14,8 +13,10 @@ class GalleryRecyclerAdapter(val context: Context, val items: List<String>, val 
   : RecyclerView.Adapter<GalleryViewHolder>() {
 
   lateinit var imageView: ImageView
-  lateinit var imagePlaceHolder: ImageView
-  lateinit var imageError: ImageView
+
+  init {
+    setHasStableIds(true)
+  }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GalleryViewHolder {
     val row = parent.inflate(R.layout.item_gallery)
@@ -28,44 +29,27 @@ class GalleryRecyclerAdapter(val context: Context, val items: List<String>, val 
 
   override fun onBindViewHolder(holder: GalleryViewHolder, position: Int) {
     imageView = holder.itemImage
-    imagePlaceHolder = holder.itemImagePlaceholder
-    imageError = holder.itemImageError
-
-    imageError.drawableCompat(R.drawable.nophoto)
-    imagePlaceHolder.drawableCompat(R.drawable.placeholder)
-
     loadImage(items[position])
+  }
+
+  override fun getItemId(position: Int): Long {
+    return items[position].hashCode().toLong()
   }
 
   private fun loadImage(imageUrl: String) {
     if (imageUrl.isNullOrEmpty()) {
       showError()
     } else {
-      showPlaceHolder()
       loadImageFromUrl(imageUrl)
     }
   }
 
-  private fun loadImageFromUrl(imageUrl: String) {
-    imageProvider.loadImage(context, imageUrl, imageView, { showImage() }, { showError() })
-  }
-
-  private fun showPlaceHolder() {
-    imageView.visibility = View.GONE
-    imagePlaceHolder.visibility = View.VISIBLE
-    imageError.visibility = View.GONE
-  }
-
   private fun showError() {
-    imageView.visibility = View.GONE
-    imagePlaceHolder.visibility = View.GONE
-    imageError.visibility = View.VISIBLE
+    imageProvider.loadError(context, imageView)
   }
 
-  private fun showImage() {
-    imageView.visibility = View.VISIBLE
-    imagePlaceHolder.visibility = View.GONE
-    imageError.visibility = View.GONE
+  private fun loadImageFromUrl(imageUrl: String) {
+    imageProvider.loadImage(context, imageUrl, imageView)
   }
 }
 

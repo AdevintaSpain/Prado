@@ -61,7 +61,7 @@ class FullscreenGalleryActivityShould {
     assertThatBackButtonClosesTheApp()
   }
 
-  private fun givenAnEmpty5imageUrlsIntent(): Intent? {
+  private fun givenAnEmpty5imageUrlsIntent(): Intent {
     val intent = Intent()
 
     val imageUrls = arrayListOf("", "", "", "", "")

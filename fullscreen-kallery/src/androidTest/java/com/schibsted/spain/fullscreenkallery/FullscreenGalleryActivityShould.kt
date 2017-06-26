@@ -81,7 +81,7 @@ class FullscreenGalleryActivityShould {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       numActivities = activityManager.appTasks[0].taskInfo.numActivities
     } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      if (activityManager.appTasks[0].taskInfo.topActivity == null) {
+      if (activityManager.appTasks[0].taskInfo.origActivity == null) {
         numActivities = 0
       }
     } else {

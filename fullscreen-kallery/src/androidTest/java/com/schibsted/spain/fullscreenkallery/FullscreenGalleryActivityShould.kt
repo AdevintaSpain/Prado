@@ -1,15 +1,11 @@
 package com.schibsted.spain.fullscreenkallery
 
-import android.app.ActivityManager
-import android.content.Context
 import android.content.Intent
-import android.os.Build
-import android.support.test.InstrumentationRegistry
 import com.schibsted.spain.barista.BaristaAssertions.*
 import com.schibsted.spain.barista.BaristaClickActions.click
 import com.schibsted.spain.barista.BaristaRule
 import com.schibsted.spain.barista.BaristaViewPagerActions.swipeViewPagerForward
-import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -75,19 +71,7 @@ class FullscreenGalleryActivityShould {
   }
 
   private fun assertThatActivityHasBeenClosed() {
-    val activityManager = InstrumentationRegistry.getTargetContext().getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-    var numActivities = 1
-
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      numActivities = activityManager.appTasks[0].taskInfo.numActivities
-    } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      if (activityManager.appTasks[0].taskInfo.origActivity == null) {
-        numActivities = 0
-      }
-    } else {
-      numActivities = activityManager.getRunningTasks(2).size
-    }
-
-    assertEquals(0, numActivities)
+    val activity = activityRule.activityTestRule.activity
+    assertTrue(activity.isFinishing || activity.isDestroyed)
   }
 }

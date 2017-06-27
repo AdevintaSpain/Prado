@@ -9,7 +9,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
 import com.github.rubensousa.gravitysnaphelper.GravityPagerSnapHelper
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper
-import com.schibsted.spain.fullscreenkallery.R
 import com.schibsted.spain.prado.adapter.GalleryRecyclerAdapter
 import com.schibsted.spain.prado.extensions.buildPradoGalleryIntent
 import com.schibsted.spain.prado.imageProvider.GlideImageProvider

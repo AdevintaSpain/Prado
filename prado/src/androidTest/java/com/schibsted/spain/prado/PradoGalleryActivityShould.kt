@@ -1,11 +1,10 @@
-package com.schibsted.spain.fullscreenkallery
+package com.schibsted.spain.prado
 
 import android.content.Intent
 import com.schibsted.spain.barista.BaristaAssertions.*
 import com.schibsted.spain.barista.BaristaClickActions.click
 import com.schibsted.spain.barista.BaristaRule
 import com.schibsted.spain.barista.BaristaViewPagerActions.swipeViewPagerForward
-import com.schibsted.spain.prado.PradoGalleryActivity
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule

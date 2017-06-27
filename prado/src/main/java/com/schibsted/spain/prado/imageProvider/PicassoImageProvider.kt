@@ -5,8 +5,8 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import com.github.chrisbanes.photoview.PhotoViewAttacher
 import com.jakewharton.picasso.OkHttp3Downloader
-import com.schibsted.spain.fullscreenkallery.BuildConfig
-import com.schibsted.spain.fullscreenkallery.R
+import com.schibsted.spain.prado.BuildConfig
+import com.schibsted.spain.prado.R
 import com.schibsted.spain.prado.extensions.centerInParent
 import com.schibsted.spain.prado.extensions.into
 import com.squareup.picasso.Picasso

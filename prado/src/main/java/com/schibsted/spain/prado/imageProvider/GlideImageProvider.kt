@@ -4,7 +4,7 @@ import android.content.Context
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.github.chrisbanes.photoview.PhotoViewAttacher
-import com.schibsted.spain.fullscreenkallery.R
+import com.schibsted.spain.prado.R
 
 
 class GlideImageProvider : ImageProvider {

@@ -1,10 +1,12 @@
 package com.schibsted.spain.prado
 
 import android.content.Intent
+import android.os.Build
 import com.schibsted.spain.barista.BaristaAssertions.*
 import com.schibsted.spain.barista.BaristaClickActions.click
 import com.schibsted.spain.barista.BaristaRule
 import com.schibsted.spain.barista.BaristaViewPagerActions.swipeViewPagerForward
+import org.junit.Assert
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
@@ -71,7 +73,11 @@ class PradoGalleryActivityShould {
   }
 
   private fun assertThatActivityHasBeenClosed() {
-    val activity = activityRule.activityTestRule.activity
-    assertTrue(activity.isFinishing || activity.isDestroyed)
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+      val activity = activityRule.activityTestRule.activity
+      assertTrue(activity.isFinishing || activity.isDestroyed)
+    } else {
+      Assert.fail("Test on a device with API >= " + Build.VERSION_CODES.JELLY_BEAN_MR1)
+    }
   }
 }

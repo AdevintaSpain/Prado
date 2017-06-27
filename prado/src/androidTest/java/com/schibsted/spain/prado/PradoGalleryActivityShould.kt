@@ -5,15 +5,16 @@ import com.schibsted.spain.barista.BaristaAssertions.*
 import com.schibsted.spain.barista.BaristaClickActions.click
 import com.schibsted.spain.barista.BaristaRule
 import com.schibsted.spain.barista.BaristaViewPagerActions.swipeViewPagerForward
+import com.schibsted.spain.prado.PradoGalleryActivity
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class FullscreenGalleryActivityShould {
+class PradoGalleryActivityShould {
 
   @get:Rule
-  val activityRule: BaristaRule<FullscreenGalleryActivity> = BaristaRule.create(FullscreenGalleryActivity::class.java)
+  val activityRule: BaristaRule<PradoGalleryActivity> = BaristaRule.create(PradoGalleryActivity::class.java)
 
   @Before
   fun setUp() {
@@ -65,7 +66,7 @@ class FullscreenGalleryActivityShould {
     val intent = Intent()
 
     val imageUrls = arrayListOf("", "", "", "", "")
-    intent.putStringArrayListExtra(FullscreenGalleryActivity.EXTRA_LIST_ITEMS, imageUrls)
+    intent.putStringArrayListExtra(PradoGalleryActivity.EXTRA_LIST_ITEMS, imageUrls)
 
     return intent
   }

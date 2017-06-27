@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import com.schibsted.spain.fullscreenkallery.FullscreenGalleryActivity
-import com.schibsted.spain.fullscreenkallery.imageProvider.ImageProvider
+import com.schibsted.spain.fullscreenkallery.imageprovider.ImageProvider
 import com.squareup.picasso.Callback
 import com.squareup.picasso.RequestCreator
 

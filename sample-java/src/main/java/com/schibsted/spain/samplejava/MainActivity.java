@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import com.schibsted.spain.fullscreenkallery.FullscreenGalleryActivity;
-import com.schibsted.spain.fullscreenkallery.imageProvider.ImageProvider;
+import com.schibsted.spain.fullscreenkallery.imageprovider.ImageProvider;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -3,7 +3,7 @@ package com.schibsted.spain.sample
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.schibsted.spain.fullscreenkallery.extensions.buildFullscreenGalleryIntent
-import com.schibsted.spain.fullscreenkallery.imageProvider.ImageProvider
+import com.schibsted.spain.fullscreenkallery.imageprovider.ImageProvider
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

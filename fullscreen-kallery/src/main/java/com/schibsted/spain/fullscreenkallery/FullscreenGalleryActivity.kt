@@ -11,9 +11,9 @@ import com.github.rubensousa.gravitysnaphelper.GravityPagerSnapHelper
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper
 import com.schibsted.spain.fullscreenkallery.adapter.GalleryRecyclerAdapter
 import com.schibsted.spain.fullscreenkallery.extensions.buildFullscreenGalleryIntent
-import com.schibsted.spain.fullscreenkallery.imageProvider.GlideImageProvider
-import com.schibsted.spain.fullscreenkallery.imageProvider.ImageProvider
-import com.schibsted.spain.fullscreenkallery.imageProvider.PicassoImageProvider
+import com.schibsted.spain.fullscreenkallery.imageprovider.GlideImageProvider
+import com.schibsted.spain.fullscreenkallery.imageprovider.ImageProvider
+import com.schibsted.spain.fullscreenkallery.imageprovider.PicassoImageProvider
 import kotlinx.android.synthetic.main.activity_fullscreen_gallery.*
 
 class FullscreenGalleryActivity : AppCompatActivity() {

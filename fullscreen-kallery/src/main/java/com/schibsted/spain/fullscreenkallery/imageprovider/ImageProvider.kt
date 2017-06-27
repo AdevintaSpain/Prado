@@ -1,4 +1,4 @@
-package com.schibsted.spain.fullscreenkallery.imageProvider
+package com.schibsted.spain.fullscreenkallery.imageprovider
 
 import android.content.Context
 import android.widget.ImageView

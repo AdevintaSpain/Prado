@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.schibsted.spain.fullscreenkallery.R
 import com.schibsted.spain.fullscreenkallery.extensions.inflate
-import com.schibsted.spain.fullscreenkallery.imageProvider.ImageProvider
+import com.schibsted.spain.fullscreenkallery.imageprovider.ImageProvider
 
 class GalleryRecyclerAdapter(val context: Context, val items: List<String>, val imageProvider: ImageProvider)
   : RecyclerView.Adapter<GalleryViewHolder>() {

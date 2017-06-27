@@ -42,7 +42,7 @@ dependencies {
   androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
-  androidTestCompile('com.schibsted.spain:barista:1.5.0') {
+  androidTestCompile('com.schibsted.spain:barista:1.5.1') {
     exclude group: 'com.android.support'
   }
 

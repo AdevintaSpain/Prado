@@ -18,13 +18,6 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
-  productFlavors {
-    dev {
-      minSdkVersion 21
-    }
-    full {
-    }
-  }
 }
 
 dependencies {

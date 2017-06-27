@@ -1,4 +1,4 @@
-package com.schibsted.spain.fullscreenkallery.recyclerviewpager
+package com.schibsted.spain.prado.recyclerviewpager
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView

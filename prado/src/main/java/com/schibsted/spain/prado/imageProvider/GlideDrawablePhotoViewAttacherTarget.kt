@@ -1,4 +1,4 @@
-package com.schibsted.spain.fullscreenkallery.imageProvider
+package com.schibsted.spain.prado.imageProvider
 
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
@@ -7,11 +7,11 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable
 import com.bumptech.glide.request.animation.GlideAnimation
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget
 import com.github.chrisbanes.photoview.PhotoViewAttacher
-import com.schibsted.spain.fullscreenkallery.extensions.centerInParent
+import com.schibsted.spain.prado.extensions.centerInParent
 import java.lang.Exception
 
 
-internal class KalleryGlideTarget(val imageView: ImageView, val photoViewAttacher: PhotoViewAttacher) : GlideDrawableImageViewTarget(imageView) {
+internal class GlideDrawablePhotoViewAttacherTarget(val imageView: ImageView, val photoViewAttacher: PhotoViewAttacher) : GlideDrawableImageViewTarget(imageView) {
 
   override fun onLoadStarted(placeholder: Drawable?) {
     imageView.scaleType = ImageView.ScaleType.CENTER_CROP

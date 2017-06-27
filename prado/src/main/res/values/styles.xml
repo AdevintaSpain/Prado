@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <style name="AppThemeFullScreenKallery"
+  <style name="AppThemePrado"
          parent="Theme.AppCompat.Light.NoActionBar">
     <item name="colorPrimary">@color/galleryPrimaryColor</item>
     <item name="colorPrimaryDark">@color/galleryPrimaryColorDark</item>

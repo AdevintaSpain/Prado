@@ -1,4 +1,4 @@
-package com.schibsted.spain.fullscreenkallery.imageProvider
+package com.schibsted.spain.prado.imageProvider
 
 import android.content.Context
 import android.widget.ImageView
@@ -7,8 +7,8 @@ import com.github.chrisbanes.photoview.PhotoViewAttacher
 import com.jakewharton.picasso.OkHttp3Downloader
 import com.schibsted.spain.fullscreenkallery.BuildConfig
 import com.schibsted.spain.fullscreenkallery.R
-import com.schibsted.spain.fullscreenkallery.extensions.centerInParent
-import com.schibsted.spain.fullscreenkallery.extensions.into
+import com.schibsted.spain.prado.extensions.centerInParent
+import com.schibsted.spain.prado.extensions.into
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

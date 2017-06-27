@@ -7,10 +7,10 @@
     android:layout_height="match_parent"
     android:background="@color/gallery_background"
     android:fitsSystemWindows="true"
-    tools:context="com.schibsted.spain.fullscreenkallery.FullscreenGalleryActivity"
+    tools:context="com.schibsted.spain.prado.PradoGalleryActivity"
     >
 
-  <com.schibsted.spain.fullscreenkallery.recyclerviewpager.HackyRecyclerViewPager
+  <com.schibsted.spain.prado.recyclerviewpager.HackyRecyclerViewPager
       android:id="@+id/galleryViewPager"
       android:layout_width="0dp"
       android:layout_height="0dp"

@@ -1,4 +1,4 @@
-package com.schibsted.spain.fullscreenkallery.adapter
+package com.schibsted.spain.prado.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.schibsted.spain.fullscreenkallery.R
-import com.schibsted.spain.fullscreenkallery.extensions.inflate
-import com.schibsted.spain.fullscreenkallery.imageProvider.ImageProvider
+import com.schibsted.spain.prado.extensions.inflate
+import com.schibsted.spain.prado.imageProvider.ImageProvider
 
 class GalleryRecyclerAdapter(val context: Context, val items: List<String>, val imageProvider: ImageProvider)
   : RecyclerView.Adapter<GalleryViewHolder>() {

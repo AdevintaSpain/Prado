@@ -1,4 +1,4 @@
-package com.schibsted.spain.fullscreenkallery.imageProvider
+package com.schibsted.spain.prado.imageProvider
 
 import android.content.Context
 import android.widget.ImageView
@@ -23,6 +23,6 @@ class GlideImageProvider : ImageProvider {
         .error(R.drawable.nophoto)
         .placeholder(R.drawable.placeholder)
         .thumbnail(IMAGE_QUALITY_1_PERCENT)
-        .into(KalleryGlideTarget(imageView, PhotoViewAttacher(imageView)))
+        .into(GlideDrawablePhotoViewAttacherTarget(imageView, PhotoViewAttacher(imageView)))
   }
 }

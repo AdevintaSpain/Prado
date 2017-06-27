@@ -1,4 +1,4 @@
-package com.schibsted.spain.fullscreenkallery.adapter
+package com.schibsted.spain.prado.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.View

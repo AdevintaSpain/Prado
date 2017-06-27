@@ -12,10 +12,10 @@
       android:supportsRtl="true"
       >
     <activity
-        android:theme="@style/AppThemeFullScreenKallery"
+        android:theme="@style/AppThemePrado"
         android:configChanges="keyboardHidden"
         android:launchMode="singleTask"
-        android:name=".FullscreenGalleryActivity"
+        android:name="com.schibsted.spain.prado.PradoGalleryActivity"
         >
     </activity>
   </application>

@@ -1,4 +1,4 @@
-package com.schibsted.spain.fullscreenkallery
+package com.schibsted.spain.prado
 
 import android.app.Activity
 import android.content.Context
@@ -9,14 +9,15 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
 import com.github.rubensousa.gravitysnaphelper.GravityPagerSnapHelper
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper
-import com.schibsted.spain.fullscreenkallery.adapter.GalleryRecyclerAdapter
-import com.schibsted.spain.fullscreenkallery.extensions.buildFullscreenGalleryIntent
-import com.schibsted.spain.fullscreenkallery.imageProvider.GlideImageProvider
-import com.schibsted.spain.fullscreenkallery.imageProvider.ImageProvider
-import com.schibsted.spain.fullscreenkallery.imageProvider.PicassoImageProvider
+import com.schibsted.spain.fullscreenkallery.R
+import com.schibsted.spain.prado.adapter.GalleryRecyclerAdapter
+import com.schibsted.spain.prado.extensions.buildPradoGalleryIntent
+import com.schibsted.spain.prado.imageProvider.GlideImageProvider
+import com.schibsted.spain.prado.imageProvider.ImageProvider
+import com.schibsted.spain.prado.imageProvider.PicassoImageProvider
 import kotlinx.android.synthetic.main.activity_fullscreen_gallery.*
 
-class FullscreenGalleryActivity : AppCompatActivity() {
+class PradoGalleryActivity : AppCompatActivity() {
 
   companion object {
     val EXTRA_LIST_ITEMS = "EXTRA_LIST_ITEMS"
@@ -28,9 +29,9 @@ class FullscreenGalleryActivity : AppCompatActivity() {
 
     @JvmStatic
     @JvmOverloads
-    fun buildFullscreenGalleryIntent(context: Context, imageUrls: List<String>,
-                                     imageProviderType: ImageProvider.ImageProviderType = ImageProvider.ImageProviderType.PICASSO): Intent {
-      return context.buildFullscreenGalleryIntent(imageUrls, imageProviderType)
+    fun buildPradoGalleryIntent(context: Context, imageUrls: List<String>,
+                                imageProviderType: ImageProvider.ImageProviderType = ImageProvider.ImageProviderType.PICASSO): Intent {
+      return context.buildPradoGalleryIntent(imageUrls, imageProviderType)
     }
   }
 

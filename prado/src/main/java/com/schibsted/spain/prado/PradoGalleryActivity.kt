@@ -11,9 +11,9 @@ import com.github.rubensousa.gravitysnaphelper.GravityPagerSnapHelper
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper
 import com.schibsted.spain.prado.adapter.GalleryRecyclerAdapter
 import com.schibsted.spain.prado.extensions.buildPradoGalleryIntent
-import com.schibsted.spain.prado.imageProvider.GlideImageProvider
-import com.schibsted.spain.prado.imageProvider.ImageProvider
-import com.schibsted.spain.prado.imageProvider.PicassoImageProvider
+import com.schibsted.spain.prado.imageprovider.GlideImageProvider
+import com.schibsted.spain.prado.imageprovider.ImageProvider
+import com.schibsted.spain.prado.imageprovider.PicassoImageProvider
 import kotlinx.android.synthetic.main.activity_fullscreen_gallery.*
 
 class PradoGalleryActivity : AppCompatActivity() {

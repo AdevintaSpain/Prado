@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.schibsted.spain.prado.R
 import com.schibsted.spain.prado.extensions.inflate
-import com.schibsted.spain.prado.imageProvider.ImageProvider
+import com.schibsted.spain.prado.imageprovider.ImageProvider
 
 class GalleryRecyclerAdapter(val context: Context, val items: List<String>, val imageProvider: ImageProvider)
   : RecyclerView.Adapter<GalleryViewHolder>() {

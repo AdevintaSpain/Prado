@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import com.schibsted.spain.prado.PradoGalleryActivity
-import com.schibsted.spain.prado.imageProvider.ImageProvider
+import com.schibsted.spain.prado.imageprovider.ImageProvider
 import com.squareup.picasso.Callback
 import com.squareup.picasso.RequestCreator
 

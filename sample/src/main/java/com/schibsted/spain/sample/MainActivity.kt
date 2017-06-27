@@ -3,7 +3,7 @@ package com.schibsted.spain.sample
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.schibsted.spain.prado.extensions.buildPradoGalleryIntent
-import com.schibsted.spain.prado.imageProvider.ImageProvider
+import com.schibsted.spain.prado.imageprovider.ImageProvider
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

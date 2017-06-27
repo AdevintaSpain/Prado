@@ -1,4 +1,4 @@
-package com.schibsted.spain.prado.imageProvider
+package com.schibsted.spain.prado.imageprovider
 
 import android.graphics.drawable.Drawable
 import android.widget.ImageView

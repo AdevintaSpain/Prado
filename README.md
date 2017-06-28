@@ -1,7 +1,7 @@
 # Prado
 **Your images, your museum**
 
-![Fullscreen image gallery demo](./art/fullscreen-gallery.gif)
+![Prado demo](./art/prado.gif =540x960)
 
 Showcase your images like if they were in the Prado museum!
 

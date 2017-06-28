@@ -1,7 +1,7 @@
 # Prado
 **Your images, your museum**
 
-![Prado demo](./art/prado.gif)
+<img src="art/prado.gif" alt="Prado demo" width="540" height="929">
 
 Showcase your images like if they were in the Prado museum!
 

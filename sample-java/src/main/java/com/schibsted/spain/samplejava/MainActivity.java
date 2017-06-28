@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import com.schibsted.spain.fullscreenkallery.FullscreenGalleryActivity;
-import com.schibsted.spain.fullscreenkallery.imageprovider.ImageProvider;
+import com.schibsted.spain.prado.PradoGalleryActivity;
+import com.schibsted.spain.prado.imageprovider.ImageProvider;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     launcherPicassoButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        startActivity(FullscreenGalleryActivity.buildFullscreenGalleryIntent(MainActivity.this, imageUrlsList));
+        startActivity(PradoGalleryActivity.buildPradoGalleryIntent(MainActivity.this, imageUrlsList));
       }
     });
 
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     launcherGlideButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        startActivity(FullscreenGalleryActivity.buildFullscreenGalleryIntent(MainActivity.this, imageUrlsList,
+        startActivity(PradoGalleryActivity.buildPradoGalleryIntent(MainActivity.this, imageUrlsList,
             ImageProvider.ImageProviderType.GLIDE));
       }
     });

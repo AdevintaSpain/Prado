@@ -123,6 +123,14 @@ Build the intent you should start from extension `Context.buildPradoGalleryInten
       });
 ```
 
+## Open source libraries we use
+- [Picasso](https://github.com/square/picasso)
+- [Glide](https://github.com/bumptech/glide)
+- [PhotoView](https://github.com/chrisbanes/PhotoView)
+- [OkHttp](https://github.com/square/okhttp)
+- [RecyclerViewSnap](https://github.com/rubensousa/RecyclerViewSnap)
+- [Barista](https://github.com/SchibstedSpain/Barista)
+
 ## CHANGELOG
 **1.0.0**
 - Initial release!

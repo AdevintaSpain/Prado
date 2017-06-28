@@ -1,7 +1,7 @@
 # Prado
 **Your images, your museum**
 
-![Prado demo](./art/prado.gif =540x960)
+![Prado demo](./art/prado.gif)
 
 Showcase your images like if they were in the Prado museum!
 
@@ -37,21 +37,20 @@ Build the intent you should start from extension `Context.buildPradoGalleryInten
           setContentView(R.layout.activity_main)
       
           val imageUrlsList = arrayListOf(
-              "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/The_Simpsons_Logo.svg/2000px-The_Simpsons_Logo.svg.png",
-              "http://assets.fxnetworks.com/shows/the-simpsons/photos/simpsons-character/Homer/swsb_character_fact_homer_550x960.png",
-              "http://assets.fxnetworks.com/shows/the-simpsons/photos/simpsons-character/Marge/swsb_character_fact_marge_550x960.png",
-              "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_bart_550x960.png",
-              "http://assets.fxnetworks.com/shows/the-simpsons/photos/simpsons-character/Lisa/swsb_character_fact_lisa_550x960.png",
-              "http://assets.fxnetworks.com/shows/the-simpsons/photos/simpsons-character/Maggie/swsb_character_fact_maggie_550x960.png",
-              "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_snowball_550x960.png",
-              "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_santaslittlehelper_550x960.png",
-              "http://assets.fxnetworks.com/shows/the-simpsons/photos/simpsons-character/Krusty/swsb_character_fact_krusty_550x960.png",
-              "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_sideshowmel_550x960.png",
-              "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_krabappel_550x960.png",
-              "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_skinner_550x960.png",
-              "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_cletus_550x960.png",
-              "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_brandine_550x960.png",
-              "http://vignette4.wikia.nocookie.net/lossimpson/images/c/c4/The_Simpsons_characters.png/revision/20110629063200?path-prefix=es",
+              "https://upload.wikimedia.org/wikipedia/commons/3/3f/Francisco_de_Goya_y_Lucientes_-_Los_fusilamientos_del_tres_de_mayo_-_1814.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/9/99/Las_Meninas_01.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/f/f1/El_caballero_de_la_mano_en_el_pecho.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/6/62/The_Garden_of_Earthly_Delights_by_Bosch_High_Resolution_2.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/f/fb/La_Anunciaci%C3%B3n_%28Fra_Angelico-Prado%29.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Carlos_V_en_M%C3%BChlberg%2C_by_Titian%2C_from_Prado_in_Google_Earth.jpg/3000px-Carlos_V_en_M%C3%BChlberg%2C_by_Titian%2C_from_Prado_in_Google_Earth.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/b/bb/Rembrandt_Harmensz._van_Rijn_014.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/b/b2/Peter_Paul_Rubens_-_The_Three_Graces%2C_1635.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/1/16/Raffael_048.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/d/d4/Crucifixi%C3%B3n_Juan_de_Flandes.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/d/da/Albrecht_D%C3%BCrer_103.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/1/1a/Weyden_Deposition.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/b/b6/El_sue%C3%B1o_de_Jacob%2C_por_Jos%C3%A9_de_Ribera.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/8/8b/Giovanni_Battista_Tiepolo_022.jpg",
               ""
           )
       
@@ -74,35 +73,33 @@ Build the intent you should start from extension `Context.buildPradoGalleryInten
       final List<String> imageUrlsList = new ArrayList<>();
   
       imageUrlsList.add(
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/The_Simpsons_Logo.svg/2000px-The_Simpsons_Logo.svg.png");
+              "https://upload.wikimedia.org/wikipedia/commons/3/3f/Francisco_de_Goya_y_Lucientes_-_Los_fusilamientos_del_tres_de_mayo_-_1814.jpg");
       imageUrlsList.add(
-          "http://assets.fxnetworks.com/shows/the-simpsons/photos/simpsons-character/Homer/swsb_character_fact_homer_550x960.png");
+              "https://upload.wikimedia.org/wikipedia/commons/9/99/Las_Meninas_01.jpg");
       imageUrlsList.add(
-          "http://assets.fxnetworks.com/shows/the-simpsons/photos/simpsons-character/Marge/swsb_character_fact_marge_550x960.png");
+              "https://upload.wikimedia.org/wikipedia/commons/f/f1/El_caballero_de_la_mano_en_el_pecho.jpg");
       imageUrlsList.add(
-          "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_bart_550x960.png");
+              "https://upload.wikimedia.org/wikipedia/commons/6/62/The_Garden_of_Earthly_Delights_by_Bosch_High_Resolution_2.jpg");
       imageUrlsList.add(
-          "http://assets.fxnetworks.com/shows/the-simpsons/photos/simpsons-character/Lisa/swsb_character_fact_lisa_550x960.png");
+              "https://upload.wikimedia.org/wikipedia/commons/f/fb/La_Anunciaci%C3%B3n_%28Fra_Angelico-Prado%29.jpg");
       imageUrlsList.add(
-          "http://assets.fxnetworks.com/shows/the-simpsons/photos/simpsons-character/Maggie/swsb_character_fact_maggie_550x960.png");
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Carlos_V_en_M%C3%BChlberg%2C_by_Titian%2C_from_Prado_in_Google_Earth.jpg/3000px-Carlos_V_en_M%C3%BChlberg%2C_by_Titian%2C_from_Prado_in_Google_Earth.jpg");
       imageUrlsList.add(
-          "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_snowball_550x960.png");
+              "https://upload.wikimedia.org/wikipedia/commons/b/bb/Rembrandt_Harmensz._van_Rijn_014.jpg");
       imageUrlsList.add(
-          "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_santaslittlehelper_550x960.png");
+              "https://upload.wikimedia.org/wikipedia/commons/b/b2/Peter_Paul_Rubens_-_The_Three_Graces%2C_1635.jpg");
       imageUrlsList.add(
-          "http://assets.fxnetworks.com/shows/the-simpsons/photos/simpsons-character/Krusty/swsb_character_fact_krusty_550x960.png");
+              "https://upload.wikimedia.org/wikipedia/commons/1/16/Raffael_048.jpg");
       imageUrlsList.add(
-          "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_sideshowmel_550x960.png");
+              "https://upload.wikimedia.org/wikipedia/commons/d/d4/Crucifixi%C3%B3n_Juan_de_Flandes.jpg");
       imageUrlsList.add(
-          "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_krabappel_550x960.png");
+              "https://upload.wikimedia.org/wikipedia/commons/d/da/Albrecht_D%C3%BCrer_103.jpg");
       imageUrlsList.add(
-          "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_skinner_550x960.png");
+              "https://upload.wikimedia.org/wikipedia/commons/1/1a/Weyden_Deposition.jpg");
       imageUrlsList.add(
-          "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_cletus_550x960.png");
+              "https://upload.wikimedia.org/wikipedia/commons/b/b6/El_sue%C3%B1o_de_Jacob%2C_por_Jos%C3%A9_de_Ribera.jpg");
       imageUrlsList.add(
-          "http://assets.fxnetworks.com/shows/the-simpsons/photos/swsb_character_fact_brandine_550x960.png");
-      imageUrlsList.add(
-          "http://vignette4.wikia.nocookie.net/lossimpson/images/c/c4/The_Simpsons_characters.png/revision/20110629063200?path-prefix=es");
+              "https://upload.wikimedia.org/wikipedia/commons/8/8b/Giovanni_Battista_Tiepolo_022.jpg");
       imageUrlsList.add("");
   
       Button launcherPicassoButton = (Button) findViewById(R.id.launcherPicassoButton);

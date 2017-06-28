@@ -1,5 +1,5 @@
-Image gallery for Android made in Kotlin!
-====================================================
+# Prado
+**Your images, your museum**
 
 ![Fullscreen image gallery demo](./art/fullscreen-gallery.gif)
 
@@ -16,7 +16,7 @@ minSdkVersion >= 15
 Just add the library dependency to you app's `build.gradle`:
 
 ```gradle
-compile 'com.schibsted.spain:prado:0.0.1'
+compile 'com.schibsted.spain:prado:1.0.0'
 ```
 
 ## Features
@@ -25,7 +25,7 @@ compile 'com.schibsted.spain:prado:0.0.1'
 - Shows the current image you are in and the total of images
 - Allows device rotation
 - Adds support for zoom in, zoom out, scroll within the image and double-tap
-- TECH: Choose the image provider you want to use: Picasso or Glide
+- TECH: Support for loading images with Picasso or Glide, choose your favorite!
 
 ## Sample Usage
 #### From Kotlin

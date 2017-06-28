@@ -1,5 +1,5 @@
 # Prado
-**Your images, your museum**
+**Your images, your art galley**
 
 <img src="art/prado.gif" alt="Prado demo" width="540" height="929">
 
@@ -13,23 +13,23 @@ minSdkVersion >= 15
 
 #### Download
 
-Just add the library dependency to you app's `build.gradle`:
+Just add the library dependency to your app's `build.gradle`:
 
 ```gradle
 compile 'com.schibsted.spain:prado:1.0.0'
 ```
 
 ## Features
-- Shows your images in a fancy way, fullscreen
-- Go through images by swiping them
-- Shows the current image you are in and the total of images
+- Shows your images in a fancy way fullscreen way
+- Go through images by swiping
+- Shows the current image position and the total of images
 - Allows device rotation
 - Adds support for zoom in, zoom out, scroll within the image and double-tap
 - TECH: Support for loading images with Picasso or Glide, choose your favorite!
 
 ## Sample Usage
 #### From Kotlin
-Build the intent you should start from extension `Context.buildPradoGalleryIntent` passing by extra the list of image urls you want to load. That's it!
+Create the intent from the extension `Context.buildPradoGalleryIntent` including the list of image urls as extra and start it. That's all!
 
 ```kotlin
       override fun onCreate(savedInstanceState: Bundle?) {

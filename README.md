@@ -1,7 +1,7 @@
 # Prado
 **Your images, your art galley**
 
-<img src="art/prado.gif" alt="Prado demo" width="540" height="929">
+<img src="art/prado.gif" alt="Prado demo" width="320" height="553">
 
 Showcase your images like if they were in the Prado museum!
 

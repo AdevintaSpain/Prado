@@ -17,7 +17,6 @@ build/
 *.ap_
 *.class
 *.dex
-gradle.properties
 project.properties
 
 .idea/.name

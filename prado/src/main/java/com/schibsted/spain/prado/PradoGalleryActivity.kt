@@ -14,6 +14,7 @@ import com.schibsted.spain.prado.extensions.buildPradoGalleryIntent
 import com.schibsted.spain.prado.imageprovider.GlideImageProvider
 import com.schibsted.spain.prado.imageprovider.ImageProvider
 import com.schibsted.spain.prado.imageprovider.PicassoImageProvider
+import com.schibsted.spain.prado.throwable.ImageProviderNotAvailableError
 import kotlinx.android.synthetic.main.activity_fullscreen_gallery.*
 
 class PradoGalleryActivity : AppCompatActivity() {
@@ -81,9 +82,13 @@ class PradoGalleryActivity : AppCompatActivity() {
   }
 
   private fun provideImageProvider() : ImageProvider {
-    when (imageProviderType) {
-      ImageProvider.ImageProviderType.PICASSO -> return PicassoImageProvider(this)
-      ImageProvider.ImageProviderType.GLIDE -> return GlideImageProvider()
+    try {
+      when (imageProviderType) {
+        ImageProvider.ImageProviderType.PICASSO -> return PicassoImageProvider(this)
+        ImageProvider.ImageProviderType.GLIDE -> return GlideImageProvider(this)
+      }
+    } catch (ipnae: ImageProviderNotAvailableError) {
+      throw ImageProviderNotAvailableError("You have to provide at least one image provider (Glide or Picasso)")
     }
   }
 

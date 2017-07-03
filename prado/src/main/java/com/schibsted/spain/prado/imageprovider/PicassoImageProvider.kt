@@ -9,6 +9,7 @@ import com.schibsted.spain.prado.BuildConfig
 import com.schibsted.spain.prado.R
 import com.schibsted.spain.prado.extensions.centerInParent
 import com.schibsted.spain.prado.extensions.into
+import com.schibsted.spain.prado.throwable.ImageProviderNotAvailableError
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -19,7 +20,12 @@ class PicassoImageProvider(context: Context) : ImageProvider {
   var picasso: Picasso
 
   init {
-    val picassoBuilder = Picasso.Builder(context)
+    val picassoBuilder: Picasso.Builder
+    try {
+      picassoBuilder = Picasso.Builder(context)
+    } catch (ncdfe: NoClassDefFoundError) {
+      throw ImageProviderNotAvailableError("Picasso not available")
+    }
 
     val client = OkHttpClient().newBuilder()
         .cache(OkHttp3Downloader.createDefaultCache(context))

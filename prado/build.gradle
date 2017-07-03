@@ -20,6 +20,10 @@ android {
   }
 }
 
+configurations {
+  provided
+}
+
 dependencies {
   def supportLibVersion = '25.3.1'
 
@@ -31,12 +35,12 @@ dependencies {
   compile 'com.android.support.constraint:constraint-layout:1.0.2'
   compile 'com.github.rubensousa:gravitysnaphelper:1.1'
 
-  compile 'com.squareup.picasso:picasso:2.5.2'
-  compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
+  provided 'com.squareup.picasso:picasso:2.5.2'
+  provided 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
   compile "com.squareup.okhttp3:okhttp:3.6.0"
   compile "com.squareup.okhttp3:logging-interceptor:3.6.0"
   compile "com.github.chrisbanes:PhotoView:2.0.0"
-  compile "com.github.bumptech.glide:glide:3.8.0"
+  provided "com.github.bumptech.glide:glide:3.8.0"
   compile "com.android.support:support-v4:" + supportLibVersion
 
   androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {

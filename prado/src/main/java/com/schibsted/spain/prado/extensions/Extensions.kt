@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
-import android.widget.Toast
 import com.schibsted.spain.prado.PradoGalleryActivity
 import com.schibsted.spain.prado.imageprovider.ImageProvider
 import com.squareup.picasso.Callback
@@ -27,10 +26,6 @@ fun Context.buildPradoGalleryIntent(imageUrls: List<String>,
   return Intent(this, PradoGalleryActivity::class.java)
       .putStringArrayListExtra(PradoGalleryActivity.EXTRA_LIST_ITEMS, imageUrlsArrayList)
       .putExtra(PradoGalleryActivity.EXTRA_IMAGE_PROVIDER, imageProviderType.name)
-}
-
-fun Context.toast(message: CharSequence, length: Int = Toast.LENGTH_LONG) {
-  Toast.makeText(this, message, length).show()
 }
 
 fun ImageView.centerInParent(relativeLayoutParams: RelativeLayout.LayoutParams) {

@@ -11,11 +11,9 @@ import com.github.rubensousa.gravitysnaphelper.GravityPagerSnapHelper
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper
 import com.schibsted.spain.prado.adapter.GalleryRecyclerAdapter
 import com.schibsted.spain.prado.extensions.buildPradoGalleryIntent
-import com.schibsted.spain.prado.extensions.toast
 import com.schibsted.spain.prado.imageprovider.GlideImageProvider
 import com.schibsted.spain.prado.imageprovider.ImageProvider
 import com.schibsted.spain.prado.imageprovider.PicassoImageProvider
-import com.schibsted.spain.prado.imageprovider.VoidImageProvider
 import com.schibsted.spain.prado.throwable.ImageProviderNotAvailableError
 import kotlinx.android.synthetic.main.activity_fullscreen_gallery.*
 
@@ -90,10 +88,8 @@ class PradoGalleryActivity : AppCompatActivity() {
         ImageProvider.ImageProviderType.GLIDE -> return GlideImageProvider(this)
       }
     } catch (ipnae: ImageProviderNotAvailableError) {
-      toast("You have to provide at least one image provider (Glide or Picasso)")
-      finish()
+      throw ImageProviderNotAvailableError("You have to provide at least one image provider (Glide or Picasso)")
     }
-    return VoidImageProvider()
   }
 
   private fun initCloseIcon() {

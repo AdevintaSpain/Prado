@@ -19,6 +19,18 @@ Just add the library dependency to your app's `build.gradle`:
 compile 'com.schibsted.spain:prado:1.0.0'
 ```
 
+Then you have to declare which image provider do you want to use:
+- Picasso
+```
+compile 'com.squareup.picasso:picasso:2.5.2'
+compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
+```
+
+- Glide
+```
+compile 'com.github.bumptech.glide:glide:3.8.0'
+```
+
 ## Features
 - Shows your images in a fancy way fullscreen way
 - Go through images by swiping

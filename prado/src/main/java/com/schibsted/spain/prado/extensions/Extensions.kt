@@ -29,7 +29,6 @@ fun Context.buildPradoGalleryIntent(imageUrls: List<String>,
       .putExtra(PradoGalleryActivity.EXTRA_IMAGE_PROVIDER, imageProviderType.name)
 }
 
-@JvmOverloads
 fun Context.toast(message: CharSequence, length: Int = Toast.LENGTH_LONG) {
   Toast.makeText(this, message, length).show()
 }

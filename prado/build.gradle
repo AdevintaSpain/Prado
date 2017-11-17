@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
   compileSdkVersion 25
@@ -45,4 +46,13 @@ dependencies {
   }
 
   testCompile 'junit:junit:4.12'
+}
+
+publish {
+  userOrg = 'schibstedspain'
+  groupId = 'com.schibsted.spain'
+  artifactId = 'prado'
+  publishVersion = '1.0.0'
+  desc = 'Your images, your art gallery'
+  website = 'https://github.com/SchibstedSpain/Prado'
 }
